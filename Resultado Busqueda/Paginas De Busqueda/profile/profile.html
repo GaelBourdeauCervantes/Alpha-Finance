@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Alpha Finance</title>
+		<link rel="icon" href="../../../imagenes/logo bien.png" />
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="profile.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<script src="../../../paquetesDescargados/chart.js"></script>
+		<link rel="stylesheet" href="../../../paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100&family=Arimo:ital@1&family=Poppins:wght@300&family=Permanent+Marker&family=Roboto&family=Teko:wght@500&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet"/>
+    </head>
+	<body>
+		<div class="homeContainer" id="homeContainer">
+			<header class="arriba">
+				<a class="contenedorLogo" href="../../../index.html"
+					><img src="../../../imagenes/logo bien.png" alt="Alfa Finance" class="logo"
+				/></a>
+				<div class="baraBusqueda">
+                    <img src="../../../imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search Ticker (AAPL)" id="barraBusqueda" onkeyup="autocompleteActivado()"> 
+                </div>
+				<div class="contenedorBotonLogin">
+					<button class="switch" id="switch">
+						<span><i class="fas fa-sun sol"></i></span>
+						<span><i class="fas fa-moon luna"></i></span>
+					</button>
+					<a class="contenedorLogin" href="../../../login/login.html"
+						><i class="far fa-user-circle"></i
+					></a>
+				</div>
+			</header>
+			<nav class="paginas">
+				<a class="elementoNav summary" href="../../busqueda.html"
+					><h3>Summary</h3></a
+				>
+				<a
+					class="elementoNav statistics"
+					href="../statistics/statistics.html"
+					><h3>Statistics</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../profile/profile.html"
+					><h3>Profile</h3></a
+				>
+				<a
+					class="elementoNav financials"
+					href="../financials/incomeStatment/financials.html"
+					><h3>Financials</h3></a
+				>
+				<a
+					class="elementoNav analysis"
+					href="../analysis/analysis.html"
+					><h3>Analysis</h3></a
+				>
+				<a
+					class="elementoNav holders"
+					href="../holders/holders.html"
+					><h3>Holders</h3></a
+				>
+			</nav>
+            <main class="contenido">
+				<div class="parteArribaDeDescripcion">
+					<div class="logoYEspecificaciones">
+						<div class="logoProfile">
+							<img id="logoEmpresa" src="" alt="">
+						</div>
+						<div class="especificasionesAlLado">
+							<b class="stockNameAlLado" id="stockNameAlLado"></b>
+							<b class="indicadorAllado">Ticker Symbol: <h3 class="codeAlLado" id="codeAlLado"></h3></b>
+							<b class="indicadorAllado">Type: <h3 class="typeAllado" id="typeAllado"></h3></b>
+							<b class="indicadorAllado">Exchange: <h3 class="exchangeAllado" id="exchangeAllado"></h3></b>
+							<b class="indicadorAllado">Currency Code: <h3 class="currencyCodeAllado" id="currencyCodeAllado"></h3></b>
+							<b class="indicadorAllado">Phone: <h3 class="phoneAllado" id="phoneAllado"></h3></b>
+							<b class="indicadorAllado">Web Url: <a class="webUrlAllado" id="webUrlAllado"></a></b>
+						</div>
+						<div class="especificacionesAbajo">
+							<table class="tablaEspecificacionesAbajo">
+								<tr class="tituloCajaAbajo">
+									<th>Country Name</th>
+									<th>Sectro</th>
+									<th>Industry</th>
+									<th>Ipo Date</th>
+									<th class="ultimaData">FullTime Employees</th>
+								</tr>
+								<tr class="valorCajaAbajo">
+									<td id="countryName"></td>
+									<td id="sector"></td>
+									<td id="industry"></td>
+									<td id="ipoDate"></td>
+									<td id="fullTimeEmployees" class="ultimaData"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="contenedorTabla contenedorTablaCotiza">
+							<b class="tituloTabla">Listings</b>
+							<table class="dondeCotiza" id="tablaCoticacion">
+								<tr>
+									<th>Code</th>
+									<th>Exhange</th>
+									<th>Name</th>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="contenedorTabla contenedortabalOfficers">
+						<b class="tituloTabla">Officers List</b>
+						<table class="officers" id="tabalOfficers">
+							<tr>
+								<th>Name</th>
+								<th>Title</th>
+								<th>Year Born</th>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="descripcionNegocio">
+					<b class="tituloDescripcion">Buissnes Description</b>
+					<h3 class="textoDescripcion" id="textoDescripcion">
+						
+					</h3>
+				</div>
+            </main>
+        </body>
+        <script src="profile.js"></script>
+</html>

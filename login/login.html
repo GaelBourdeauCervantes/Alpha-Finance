@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <link rel="icon" href="../imagenes/logo bien.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login and Register</title>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100&family=Arimo:ital@1&family=Poppins:wght@300&family=Permanent+Marker&family=Roboto&family=Teko:wght@500&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+		<link href="login.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/1ad2dac95d.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        <div class="seccionWidgets">
+            <img src="../imagenes/undraw_Finance_re_gnv2.svg" alt="">
+        </div>
+		<div class="secionForm">
+            <div class="contenedorLogo">
+                <a href="../index.html"><img src="../imagenes/logo bien.png" alt="" class="logo"></a>
+            </div>
+            <button class="botonLoginSingin LogIn" id="botonLogInSingIn">Register</button>
+            <form action="" class="form" id="formLogin">
+                <div class="contenedorInput contenedorInputEmail" id = "emailUsarname" onkeyup="detectarError('emailUsarname')">
+                    <input type="text"  id="usernameEmail" class="usernameEmail" placeholder="Username / Email">
+                    <i class="iconoBuenoMalo" icono="error"></i>
+                </div>
+                <b id="mensajeErrorusernameEmail" class="mensajeError" mensaje="error"></b>
+                <div class="passwordContenedor contenedorInput" id="passwordContenedor" onkeyup="detectarError('passwordContenedor')">
+                    <input type="password" id="password" class="passwordInput" placeholder="Password">
+                    <i class="iconoBuenoMalo" icono="error"></i>
+                    <i class="fas fa-eye-slash ojoMostarar" id="iconoMostrar"></i>
+                </div>
+                <b id="mensajeErrorpassword" class="mensajeError" mensaje="error"></b>
+                <a class="olvidarPasward" href="#">forgot password?</a>
+                <button type="submit" class="botonDeEntar">Enter</button>
+            </form>
+        </div>
+        <div class="errr">
+            <!-- 
+            ──────────────────────────────────
+            ────────────██████████────────────
+            ────────███████████████████───────
+            ──────███████████████████████─────
+            ────██████████████████████████────
+            ───█████████████▀──────────▀███───
+            ──█████████████──────────────███──
+            ─████████████────────────────████─
+            ─██████████───────────────────███─
+            ██████████▀───────────────────████
+            ████████▀─────────────────────████
+            ██████▀────────────────────────███
+            █████──▄▀▀▀▀▀▀▀▄────▄▀▀▀▀▀▀▀▄──███
+            █████────▄▄▄▄▄────────▄▄▄▄▄────███
+            █████──▄▀───▄██▄────▄▀───▄██▄──███
+            █████──▀▄───▀▀█▀────▀▄───▀▀█▀──███
+            █▀──█────▀▀▀▀▀────────▀▀▀▀▀────███
+            █───█──────────────────────────█─█
+            █────────────────────▄───────────█
+            █───────────▄▀────────▀▄─────────█
+            ▀█─▄█───────▀▄─▀██──██───────────█
+            ─▀██────────────────────────────██
+            ──██────▄▀▀──────█─█──────▀▀▄──██─
+            ───█──────█▀▄────▀─▀────▄▀█────█──
+            ───█──────▀──▀▀▄▄▄▄▄▄▄▀▀──▀────█──
+            ───▀█─────────────────────────█▀──
+            ────▀█───────────────────────█▀───
+            ─────▀█─────────────────────█▀────
+            ──────▀█───────────────────█▀─────
+            ───────▀█─────────────────█▀──────
+            ────────▀█───▄───────▄───█▀───────
+            ─────────▀█▄──▀▄▄▄▄▄▀──▄█▀────────
+            ───────────▀▀█▄▄▄▄▄▄▄█▀▀──────────
+            ────────────────███───────────────
+            ──────────────███████─────────────
+            ─────────────██─███─██────────────
+            ────────────██──███──██───────────
+            ───────────██───███───██──────────
+            ──────────██────███────██─────────
+            -->
+        </div>
+		<script src="login.js"></script>
+	</body>
+</html>
+
+<!-- <i class="fas fa-check-circle"></i>
+<i class="fas fa-exclamation-circle"></i> -->
