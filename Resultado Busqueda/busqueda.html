@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Alpha Finance</title>
+		<link rel="icon" href="../imagenes/logo bien.png" />
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="busqueda.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<script src="../paquetesDescargados/chart.js"></script>
+		<link rel="stylesheet" href="../paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100&family=Arimo:ital@1&family=Poppins:wght@300&family=Permanent+Marker&family=Roboto&family=Teko:wght@500&family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="homeContainer" id="homeContainer">
+			<header class="arriba">
+				<a class="contenedorLogo" href="../index.html"
+					><img src="../imagenes/logo bien.png" alt="Alfa Finance" class="logo"
+				/></a>
+				<div class="baraBusqueda">
+                    <img src="../imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search Ticker (AAPL)" id="barraBusqueda" onkeyup="autocompleteActivado()"> 
+                </div>
+				<div class="contenedorBotonLogin">
+					<button class="switch" id="switch">
+						<span><i class="fas fa-sun sol"></i></span>
+						<span><i class="fas fa-moon luna"></i></span>
+					</button>
+					<a class="contenedorLogin" href="../login/login.html"
+						><i class="far fa-user-circle"></i
+					></a>
+				</div>
+			</header>
+			<nav class="paginas">
+				<a class="elementoNav summary" href="../Resultado Busqueda/busqueda.html"
+					><h3>Summary</h3></a
+				>
+				<a
+					class="elementoNav statistics"
+					href="../Resultado Busqueda/Paginas De Busqueda/statistics/statistics.html"
+					><h3>Statistics</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../Resultado Busqueda/Paginas De Busqueda/profile/profile.html"
+					><h3>Profile</h3></a
+				>
+				<a
+					class="elementoNav financials"
+					href="../Resultado Busqueda/Paginas De Busqueda/financials/incomeStatment/financials.html"
+					><h3>Financials</h3></a
+				>
+				<a
+					class="elementoNav analysis"
+					href="../Resultado Busqueda/Paginas De Busqueda/analysis/analysis.html"
+					><h3>Analysis</h3></a
+				>
+				<a
+					class="elementoNav owners"
+					href="../Resultado Busqueda/Paginas De Busqueda/owners/owners.html"
+					><h3>Owners</h3></a
+				>
+				<a
+					class="elementoNav news"
+					href="../Resultado Busqueda/Paginas De Busqueda/news/news.html"
+					><h3>News</h3></a
+				>
+			</nav>
+			<main class="contenido">
+				<div class="identidad">
+					<a href="" id="linkPaginaEmpresa" class="contenedorLogoEmpresa"><img src="" alt="" class="logo" id="logoEmpresa" /></a>
+					<h1 class="nombreEmpresa" id="nombreEmpresa"></h1>
+					<h2 class="tickerEmpresa" id="tickerEmpresa"></h2>
+					<h3 class="precioAccion" id="precioAccion"></h3>
+					<b class="cambioNominal" id="cambioNominal"></b>
+					<b class="cambioPorcentual" id="cambioPorcentual"></b>
+				</div>
+				<div class="contenedorCirculoDePuntuacion">
+					<div class="contenedorGraficaPuntuacion">
+						<canvas class="circuloDePuntuacion" id="circuloDePuntuacion"></canvas>
+					</div>
+					<b class="puntuacion" id="puntuacion"></b>
+				</div>
+				<div class="infoGeneral">
+					<table class="infoGeneral1">
+						<tr class="infoGMarketCap alrededor">
+							<th class="nombreInfoGeneral">Market Cap</th>
+							<td class="valorInfoGeneral" id="infoMarketCap">2.3T</td>
+						</tr>
+						<tr class="infoBeta alrededor">
+							<th class="nombreInfoGeneral">Beta</th>
+							<td class="valorInfoGeneral" id="infoBeta"></td>
+						</tr>
+						<tr class="infoPE alrededor">
+							<th class="nombreInfoGeneral">PE</th>
+							<td class="valorInfoGeneral" id="infoPe"></td>
+						</tr>
+						<tr class="infoDividend alrededor">
+							<th class="nombreInfoGeneral">Dividend</th>
+							<td class="valorInfoGeneral" id="infoDividendo"></td>
+						</tr>
+					</table>
+					<table class="infoGeneral2">
+						<tr class="infoTotalRatio alrededor">
+							<th class="nombreInfoGeneral">Total Ratio</th>
+							<td class="valorInfoGeneral" id="infoTotalRatio"></td>
+						</tr>
+						<tr class="infoEPS alrededor">
+							<th class="nombreInfoGeneral">EPS</th>
+							<td class="valorInfoGeneral" id="infoEPS"></td>
+						</tr>
+						<tr class="infoNetMargin alrededor">
+							<th class="nombreInfoGeneral">Net Margin</th>
+							<td class="valorInfoGeneral" id="infoNetMargin"></td>
+						</tr>
+						<tr class="info1yTarget alrededor">
+							<th class="nombreInfoGeneral">1y Target Est</th>
+							<td class="valorInfoGeneral" id="info1yEstimation"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="seccionGrafica">
+					<div class="cambioDeLaAccion">
+						<b class="cambioEntreEsasFechas" id="cambioNominalPorcentual"></b>
+						<i class="" id="flechaArribaAbajo"></i>
+						<b class="desdeCuando" id="desdeCuando"></b>
+					</div>
+					<div class="botonesTemporalidadGrafica">
+						<button class="5j" onclick="functionBoton5j()" id="boton5j">5d</button>
+						<button class="1m" onclick="functionboton1m()" id="boton1m">1m</button>
+						<button class="6m" onclick="functionBoton6m()" id="boton6m">6m</button>
+						<button class="YTD botonActivo" onclick="functionBotonYTD()" id="botonYTD">YTD</button>
+						<button class="1a" onclick="functionBoton1a()" id="boton1a">1a</button>
+						<button class="5a" onclick="functionBoton5a()" id="boton5a">5a</button>
+						<button class="max" onclick="functionBotonMax()" id="botonMax">max</button>
+					</div>
+					<div class="contenedorGraficaPrecio">
+						<canvas class="graficaPrecio" id="graficaPrecio"></canvas>
+					</div>
+				</div>
+				<div class="contenedorAbajoPuntuacion">
+					<div class="contenedorPuntuacionesCircular">
+						<canvas class="circuloDePuntuaciones" id="circuloDePuntuaciones"></canvas>
+					</div>
+					<div class="contenedorDataPuntuacion">
+						<b class="tituloDeTablas">Alpha Finance Table Score</b>
+						<div class="contenedorTablaPuntuacion">
+							<table class="valuationRank">
+								<tr>
+									<th class="tituloTabla">Valuation</th>
+									<td class="puntuacionTabla" id = "puntuacionTablaValuation"></td>
+								</tr>
+								<tr>
+									<th>PE</th>
+									<td id="peTabla"></td>
+								</tr>
+								<tr>
+									<th>PB</th>
+									<td id="pbTabla"></td>
+								</tr>
+								<tr>
+									<th>PS</th>
+									<td id="psTabla"></td>
+								</tr>
+								<tr>
+									<th>EV/S</th>
+									<td id="ev/sTabla"></td>
+								</tr>
+								<tr>
+									<th>EV/EBITDA</th>
+									<td id="ev/EbitdaTabla"></td>
+								</tr>
+								<tr>
+									<th>EV/EBIT</th>
+									<td id="ev/EbitTabla"></td>
+								</tr>
+								<tr>
+									<th>EV/FCF</th>
+									<td id="ev/FcfTabla"></td>
+								</tr>
+							</table>
+							<table class="grwothRank">
+								<tr>
+									<th class="tituloTabla" id="grwothRankTitulo">Grwoth</th>
+									<td class="puntuacionTabla"></td>
+								</tr>
+								<tr>
+									<th>Total Revenue</th>
+									<td id="totalRevenueTabla"></td>
+								</tr>
+								<tr>
+									<th>Net Incomme</th>
+									<td id="netIncommeTabla"></td>
+								</tr>
+								<tr>
+									<th>Op Cash fLow</th>
+									<td id="oparatingCashFlowTabla"></td>
+								</tr>
+								<tr>
+									<th>Free Cash Flow</th>
+									<td id="freeCashFlowTabla"></td>
+								</tr>
+								<tr>
+									<th>ROIC</th>
+									<td id="roicGTabla"></td>
+								</tr>
+								<tr>
+									<th>Assets</th>
+									<td id="assetsTabla"></td>
+								</tr>
+								<tr>
+									<th>Liabilities</th>
+									<td id="liabilitiesTabla"></td>
+								</tr>
+							</table>
+							<table class="financialStrengthRank">
+								<tr>
+									<th class="tituloTabla">Financial Strength</th>
+									<td class="puntuacionTabla" id="financialStrengthRank"></td>
+								</tr>
+								<tr>
+									<th>Total Ratio</th>
+									<td id="totalRatioTabla"></td>
+								</tr>
+								<tr>
+									<th>Current Ratio</th>
+									<td id="currentRatioTabla"></td>
+								</tr>
+								<tr>
+									<th>Cash to Debt</th>
+									<td id="cashToDebtTabla"></td>
+								</tr>
+								<tr>
+									<th>Debt to Equity</th>
+									<td id="debtToEquityTabla"></td>
+								</tr>
+								<tr>
+									<th>F-Score</th>
+									<td id="f-ScoreTabla"></td>
+								</tr>
+								<tr>
+									<th>Z-Score</th>
+									<td id="z-ScoreTabla"></td>
+								</tr>
+								<tr>
+									<th>M-Score</th>
+									<td id="m-ScoreTabla"></td>
+								</tr>
+							</table>
+							<table class="profitabilityRank">
+								<tr>
+									<th class="tituloTabla">Profitability</th>
+									<td class="puntuacionTabla" id="profitabilityRank"></td>
+								</tr>
+								<tr>
+									<th>Gross Margin</th>
+									<td id="grossMarginTabla"></td>
+								</tr>
+								<tr>
+									<th>Net Margin</th>
+									<td id="netMarginTabla"></td>
+								</tr>
+								<tr>
+									<th>FCF Margin</th>
+									<td id="fcfMarginTabla"></td>
+								</tr>
+								<tr>
+									<th>ROE</th>
+									<td id="roeTabla"></td>
+								</tr>
+								<tr>
+									<th>ROA</th>
+									<td id="roaTabla"></td>
+								</tr>
+								<tr>
+									<th>ROIC</th>
+									<td id="roicTabla"></td>
+								</tr>
+								<tr>
+									<th>ROIC vs WACC</th>
+									<td id="roicvaWaacTabla"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+                </div>
+				<div class="contenedorRoicYanalystas">
+					<div class="contenedorRoic">
+						<div class="contenedorGraficaROIC">
+							<div class="contenedorCanvasGraficaRoic">
+								<canvas  class="graficaROIC" id="graficaROIC"></canvas>
+							</div>
+						</div>
+						<table class="tablaRoic" id="tablaRoic">
+							<tr id ="tablaRoicDate">
+								<th>Date</th>
+							</tr>
+							<tr id="tablaRoicInvestedCapital">
+								<th>Invested Cap</th>
+							</tr>
+							<tr id="tablaRoicNopat">
+								<th>NOPAT</th>
+							</tr>
+							<tr id="tablaRoicRoic">
+								<th>ROIC</th>
+							</tr>
+						</table>
+					</div>
+					<div class="contenedorAnalystas">
+						<div class="contenedorOpinionesAnalystas">
+							<div class="contenedorCanvasOpinionesAnalystas">
+								<canvas class="graficaBarrasOpinionAnalystas" id="graficaBarras"></canvas>
+							</div>
+						</div>
+						<div class="contenedorEarnings">
+							<div class="contenedorCanvasEarnings">
+								<canvas class="graficaEarnings" id="graficaEarnings"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.js"
+		integrity="sha512-VnJVXpOlJZ9qp7za6z7yzGvoNSIzHpeLfGlg7LoAqiMSkglhSUDJrxeUmKBPH1LtPlcypv6NnNO4Bbx8fkBD+w=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+	<script src="busqueda.js"></script>
+</html>
