@@ -30,17 +30,13 @@ a {
 	align-items: center;
 	justify-content: space-between;
 	grid-area: arriba;
-	position: fixed;
+    position: fixed;
 	top: 0;
 	z-index: 1000;
 }
 
 .homeContainer .contenedorLogo {
 	height: 60px;
-}
-
-.homeContainer .contenedorLogoEmpresa {
-	height: 100%;
 }
 
 .homeContainer .logo::selection {
@@ -165,7 +161,6 @@ a {
 	flex-flow: row;
 	align-self: flex-end;
 	width: 99%;
-	position: relative;
 }
 
 .paginas .elementoNav {
@@ -186,845 +181,361 @@ a {
 	cursor: pointer;
 }
 
-.summary {
+
+.analysis {
 	background-color: #eae8e8 !important;
 	border: 1px solid rgb(124, 124, 124);
 }
 
-/* Secccion contenido----------------------------------------------------------------- */
-
-.positivo {
-	color: #188038;
-}
-
-.negativo {
-	color: #d93025;
-}
-
-.neutro {
-	color: #666666;
-}
-
+/* Contenido */
 .contenido {
 	width: 90%;
-	display: grid;
-	grid-template-columns: 33% 67%;
-	grid-template-areas:
-		'identidad         identidad'
-		'puntuacionCirculo graficaPrecio'
-		'infoGeneral       graficaPrecio'
-		'ranks             ranks'
-		'roicYanalystas    roicYanalystas';
-	align-items: center;
-	justify-content: center;
 	position: absolute;
 	top: 110px;
-}
-
-/* Indentidad------------ */
-.identidad {
-	grid-area: identidad;
-	width: 100%;
-	height: 50px;
-	display: flex;
-	flex-direction: row;
-	align-items: baseline;
-}
-
-.contenedorNombreEmpresaCentro {
-	display: none;
-}
-
-.identidad .logo {
-	height: 100%;
-}
-
-.identidad .nombreEmpresa {
-	font-size: 28px;
-	margin-left: 20px;
-}
-.identidad .tickerEmpresa {
-	font-size: 24px;
-	margin-left: 5px;
-}
-
-.identidad .precioAccion {
-	font-size: 24px;
-	margin-left: 15px;
-}
-
-.identidad .cambioNominal {
-	font-size: 17px;
-	margin-left: 15px;
-}
-
-.identidad .cambioPorcentual {
-	font-size: 17px;
-	margin-left: 5px;
-}
-
-/* circulo de puntuacion-------- */
-.contenedorCirculoDePuntuacion {
-	grid-area: puntuacionCirculo;
-	padding-top: 20px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 20% 80%;
+    grid-template-areas: 'tipoAnalisis       tipoAnalisis'
+	                     'titulo             titulo'
+						 'resultado          resultado'
+						 'inputs             inputs'
+						 'grafica            grafica'
+						 'tablaProyeccion    tablaProyeccion'
+						 'proyeccionRevenue  proyeccionRevenue'
+						 'proyeccionOCF      proyeccionOCF'
+						 'proyeccionCAPEX    proyeccionCAPEX'
+						 'resultadoFCF       resultadoFCF';
 	align-items: center;
+	justify-items: center;
 }
 
-.contenedorGraficaPuntuacion {
-	width: 60%;
-}
-
-.contenedorCirculoDePuntuacion .puntuacion {
-	position: absolute;
-	font-size: 30px;
-	font-weight: 600;
-	color: rgb(30, 30, 30);
-}
-
-/* Info General -------------------------*/
-.infoGeneral {
-	grid-area: infoGeneral;
+/* Menu tipo de analysis */
+.menuAnalysisContenedor {
+	grid-area: tipoAnalisis;
 	display: flex;
-	justify-content: center;
-	align-self: flex-start;
-	font-size: 14px;
+	flex-flow: row;
+	text-align: center;
+	width: 50%;
 }
 
-.infoGeneral1,
-.infoGeneral2 {
-	width: 200px;
-	text-align: left;
-	background-color: #f2f1f1;
-}
-
-.alrededor {
-	outline: 2px solid #fff;
-}
-
-/* Grafica principal------------------- */
-
-.seccionGrafica {
-	grid-area: graficaPrecio;
-	padding-top: 20px;
+.menuAnalysisContenedor .menuAnalysis {
+	background-color: #dbdbde;
+	font-size: 18px;
 	display: flex;
-	flex-flow: column;
+	flex-flow: row;
 	align-items: center;
 	justify-content: center;
-}
-
-/* Cambio porcentual y nominal */
-.cambioDeLaAccion {
-	display: flex;
-	width: 70%;
-	align-items: baseline;
-	justify-content: center;
-	margin-bottom: 10px;
-	font-size: 21px;
-}
-
-/* Flechas */
-.fa-arrow-down {
-	color: #d93025;
-	margin-left: 10px;
-}
-
-.fa-arrow-up {
-	color: #188038;
-	margin-left: 10px;
-}
-
-/* Desde cuando */
-.desdeCuando {
-	margin-left: 10px;
-}
-
-
-/* Tooltip */
-
-.tooltipGraficaPrincipalDesign {
-	background-color: rgba(0, 0, 0, 0.8);
-	padding: 10px 20px;
-	border-radius: 15px;
-	opacity: 1; 
-	position: absolute;
-	transition: all 0.1s ease;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
-}
-
-
-.tooltipGraficaPrincipalDesign .tooltipul {
-	margin: 0;
-	list-style: none;
-	padding: 0;
-	text-align: center;
-	font-size: 17px;
-	font-family: 'Poppins';
-	color: #fff;
-	font-weight: bold;
-}
-
-.tooltipGraficaPrincipalDesign .textoPrecio {
-	text-align: left;
-	text-transform: none;
-	font-size: 15px;
-	font-family: 'Poppins';
-	font-weight: 500;
-}
-
-.tooltipGraficaPrincipalDesign .textoCambio {
-	text-align: left;
-	text-transform: none;
-	font-size: 15px;
-	font-family: 'Poppins';
-	font-weight: 500;
-}
-
-/* Botones------ */
-
-.botonesTemporalidadGrafica {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	width: 70%;
-}
-
-.botonesTemporalidadGrafica button {
-	background-color:#fff;
-	border: none;
-	border-left: 1px solid #666666;
-	padding: 5px 0px;
-	text-align: center;
+	color: rgb(0, 0, 0);
+	width: 100%;
 	text-decoration: none;
-	font-size: 11px;
-	width: 100%;
 }
 
-.botonesTemporalidadGrafica button:hover {
+.menuAnalysisContenedor .menuAnalysis:hover {
+	background-color: #eae8e8 !important;
+	border: 1px solid rgb(124, 124, 124);
 	cursor: pointer;
 }
 
-.botonActivo {
-	border-bottom-width: 10px !important;
-	color: #48e !important;
-	font-weight: bold !important;
+.menuDCF {
+    background-color: #eae8e8 !important;
+	border: 1px solid rgb(124, 124, 124);
 }
 
-
-
-.contenedorGraficaPrecio {
-	width: 90%;
-	display: flex;
-	align-items: flex-end;
-}
-
-
-
-/* Parte de abajo ranks ------------------------------------------ */
-.contenedorAbajoPuntuacion {
-	grid-area: ranks;
-	display: flex;
-	width: 100%;
-	align-items: center;
-	justify-content: center;
-	padding: 10px 0px;
-}
-
-
-/* Radar de puntuaciones */
-.contenedorPuntuacionesCircular {
-	width: 35%;
-	max-width: 400px;
-}
-
-.contenedorDataPuntuacion {
-	display: flex;
-	flex-direction: column;
-	width: 60%; 
-}
-
-.tituloDeTablas {
-	text-align: center;
-	font-size: 20px;
+.tituloDeSeccionContenedor {
+	grid-area: titulo;
 	color: #000;
+    font-size: 50px;
+	margin-top: 15px;
 }
 
-.contenedorTablaPuntuacion {
-	margin-top: 20px;
-	width: 100%;
-	display: grid;
-	grid-template-columns: 40% 40%;
-	grid-template-areas: 
-						"valuationRank                grwothRank"
-						"financialStrengthRank        profitabilityRank";
-	justify-content: space-around;
-	font-size: 14px;
-}
-
-.valuationRank {
-	grid-area: 'valuationRank';
-	width: 100%;
-	max-width: 300px;
-}
-
-.grwothRank {
-	grid-area: "grwothRank";
-	width: 100%;
-	max-width: 300px;
-}
-
-.financialStrengthRank {
-	margin-top: 20px;
-	grid-area: "financialStrengthRank";
-	width: 100%;
-	max-width: 300px;
-}
-
-.profitabilityRank {
-	margin-top: 20px;
-	grid-area: "profitabilityRank";
-	width: 100%;
-	max-width: 300px;
-}
-
-
-
-/* Ajustes tablas */
-.contenedorTablaPuntuacion table tr:nth-child(odd) {
-	background-color: #ddd;
-}
-
-
-.contenedorTablaPuntuacion table tr .tituloTabla {
-	text-align: center;
-	padding: 5px 0px;
-	width: 60%;
-}
-
-.contenedorAbajoPuntuacion table tr .puntuacionTabla {
-	font-weight: bold;
-}
-
-.contenedorAbajoPuntuacion table tr td {
-	text-align: center;
-}
-
-.contenedorTablaPuntuacion table tr th {
-	text-align: left;
-}
-
-.contenedorTablaPuntuacion table th, .contenedorTablaPuntuacion table td{
-	border: 1px solid rgb(197, 197, 197);
-	border-collapse: collapse;
-	padding: 0px 00px;
-}
-
-.contenedorTablaPuntuacion table {
-	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-	border-collapse: collapse;
-}
-
-
-/* Seccion abajo de grafica roic y analystas */
-.contenedorRoicYanalystas {
-	grid-area: roicYanalystas;
-	justify-self: center;
+/* Resultados */
+.resultado {
+	grid-area: resultado;
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
+	margin-top: 10px;
+}
+
+.resultado div {
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	margin-bottom: 50px;
-	margin-top: 50px;
+	color: #7e7e7e;
 }
 
-/* Roic */
-.contenedorRoic {
+.resultado div b {
+	font-size: 22px;
+	color: #000 !important;
+}
+
+
+/* Inputs */
+.contenedorInputs {
+	grid-area: inputs;
+	width: 100%;
 	display: flex;
-	width: 50%;
-	min-width: 500px;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: row;
+	margin-top: 20px;
+}
+
+.contenedorInputs div {
+	height: 80px;
+	width: 150px;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
-/* Grafica de roic */ 
-.contenedorGraficaROIC {
-	width: 100%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+	padding: 50px 5px;
 	border-radius: 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 15px 0px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
-.contenedorCanvasGraficaRoic {
-	width: 95%;
-}
-
-/* Tabla Roic */
-.tablaRoic {
+.contenedorInputs div b {
 	font-size: 14px;
+}
+
+
+.contenedorInputs div input {
+	width: 80px;
+	margin-top: 10px;
+	height: 40px;
+	outline: .5px solid rgb(242, 242, 10);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.contenedorInputs div h3 {
+	width: 80px;
+	margin-top: 10px;
+	height: 40px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 300;
+}
+
+
+.marcarError {
+	width: 40%;
+	height: 40px;
+	margin-top: -180px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	font-size: 20px;
+	background-color: rgb(255, 0, 0);
+	outline: solid;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	display: none;
+}
+
+
+
+/* Grafica */
+.contenedorCanvasGraficaPirincipal {
+	grid-area: grafica;
+	width: 90%;
+	max-width: 1200px;
 	margin-top: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	padding: 5px 9px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+	justify-self: center;
+}
+
+
+
+/* Tabla de proyecion */
+.contenedorTablaCompleta {
+	grid-area: tablaProyeccion;
+	width: 90%;
+    margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contenedorTablaMovil {
+    width: 90%;
+	overflow-x: auto;
+}
+
+.contenedorTablaMovil::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.contenedorTablaMovil::-webkit-scrollbar {
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.contenedorTablaMovil::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	width: 30%;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #00b3bc;
+}
+
+.contenedorTablaMovil::-webkit-scrollbar-thumb:hover{
+	background-color: #00969b;
+}
+
+/* Projeccion Total Revenue */
+.proyeccionRevenue {
+	grid-area: proyeccionRevenue;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tituloProyecion {
+	font-size: 25px;
+}
+
+.inputValuesContainer {
+	margin-top: 20px;
+	display: flex;
+	align-self: flex-start;
+	margin-left: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.inputValuesContainer div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 250px;
+	padding: 5px 0px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.inputValuesContainer div b{
+	font-size: 16px;
+}
+
+.inputValuesContainer div h3, .inputValuesContainer div input{
+	font-size: 18px;
+	text-align: center;
+	outline: none;
+	border: none;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.inputValuesContainer div input {
+	outline: .5px solid rgb(242, 242, 10);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.contenedorCanvasGraficaProyecion {
+	width: 80%;
+	max-width: 1200px;
+	margin-top: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	padding: 5px 9px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+	justify-self: center;
+}
+
+
+.contenedorTablaProyecciones {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 90%;
+    margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Proyeccion OFC */
+.proyecccionOCF {
+	grid-area: proyeccionOCF;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Proyecccion CAPEX */
+.proyecccionCAPEX {
+	grid-area: proyeccionCAPEX;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+
+
+/* Ajustes generales tabla -------------------------------*/
+table {
+	border-collapse: collapse;
+	font-size: 14px;
 	width: 100%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+table th,   table td{
+	border-left: 1px solid rgb(197, 197, 197);
+	border-right: 1px solid rgb(197, 197, 197);
 }
 
 
-
-.tablaRoic  tr:nth-child(odd) {
-	background-color: #ddd;
-}
-
-.tablaRoic  tr th {
-	text-align: left;
+table tr td {
+	text-align: center;
+	font-weight: 300;
 	padding-left: 5px;
 }
 
-.tablaRoic  tr td {
+
+table tr th {
+	text-align: left;
+	font-weight: 600;
+	min-width: 300px;
+}
+
+table tr td input {
+	outline: .5px solid rgb(242, 242, 10);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
 	text-align: center;
+	width: 60%;
 }
 
-.tablaRoic .fecha {
-	text-align: center;
-	padding: 0px;
+.trFechas th {
+	text-align: center !important;
+	min-width: 155px !important;
 }
 
-.tablaRoic .roicValor  {
-	font-weight: 700;
+table tr:nth-child(odd) {
+	background-color: #ddd;
 }
 
-.tablaRoic th, .tablaRoic td{
-	border: 1px solid rgb(197, 197, 197);
-	border-collapse: collapse;
-	padding: 0px 0px;
+.subrayar {
+	background-color: rgb(186, 186, 186) !important;
 }
 
-.tablaRoic  {
-	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-	border-collapse: collapse;
-}
-
-/* Analystas */
-.contenedorAnalystas {
-	display: flex;
-	flex-direction: column;
-	width: 30%;
-	min-width: 320px;
-}
-
-/* Grafica Opinion Analystas----*/
-.contenedorOpinionesAnalystas {
-	width: 100%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 15px 0px;
-}
-
-.contenedorCanvasOpinionesAnalystas {
-	width: 95%;
-}
-
-/* tooltip de grafiaca opinion analystas*/
-.tooltipGraficaBarraDesign {
-	background-color: rgb(255, 255, 255);
-	padding: 10px 20px;
-	border-radius: 15px;
-	opacity: 1; 
-	position: absolute;
-	transition: all 0.1s ease;
-	border: 1px solid #cfcfcf;
-}
-
-.tooltipGraficaBarraDesign .tooltipul {
-	margin: 0;
-	list-style: none;
-	padding: 0;
-	text-align: left;
-	font-size: 17px;
-	font-family: 'Poppins';
-	color: #666666;
-	font-weight: bold;
-}
-
-.tooltipGraficaBarraDesign .textoLabel {
-	text-align: left;
-	text-transform: none;
-	font-size: 15px;
-	font-family: 'Poppins';
-	font-weight: 500;
-}
-
-.tooltipGraficaBarraDesign .iconoTooltip {
-	margin-right: 10px;
-}
-
-/* Grafica Earnings----- */
-.contenedorEarnings {
-	width: 100%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 15px 0px;
-	margin-top: 30px;
-}
-
-.contenedorCanvasEarnings {
-	width: 95%;
-}
-/* Tooltip de grafica earnings */
-.tooltipGraficaEarnings {
-	background-color: rgb(255, 255, 255);
-	padding: 10px 20px;
-	border-radius: 15px;
-	opacity: 1; 
-	position: absolute;
-	transition: all 0.1s ease;
-	border: 1px solid #cfcfcf;
-}
-
-.tooltipGraficaEarnings .tooltipul {
-	margin: 0;
-	list-style: none;
-	padding: 0;
-	text-align: left;
-	font-size: 17px;
-	font-family: 'Poppins';
-	color: #666666;
-	font-weight: bold;
-}
-
-
-/* Media query for screens under 1000px */
-@media (max-width: 1000px) {
-	
-/* Seccion arrriba----------------------------------------------------------------------------------------------------------- */
-	.arriba {
-		width: 100%;
-		margin-top: 15px;
-		padding: 0px 10px;
-	}
-
-	.homeContainer .contenedorLogo {
-		height: 35px;
-	}
-
-
-	/* Barra de busqueda */
-	.homeContainer   .baraBusqueda {
-		position: relative;
-		width: 60%;
-	}
-
-	.homeContainer   .baraBusquedaactivada {
-		border-radius: 20px 20px 0px 0px;
-		box-shadow: none;
-	}
-
-	.homeContainer   .baraBusqueda .lupa {
-		height: 80%;
-	}
-
-	.homeContainer .baraBusqueda .input {
-		border: none;
-		width: 80%;
-		font-size: 14px;
-		font-weight: normal;
-		margin-left: 2px;
-	}
-
-	.homeContainer  .baraBusqueda .input::placeholder {
-		text-transform: none;
-		font-size: 14px;
-		font-weight: normal;
-	}
-
-	.homeContainer .arriba .contenedorBotonLogin {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.homeContainer .switch {
-		background: #343d5b;
-		border-radius: 1000px;
-		border: none;
-		position: relative;
-		cursor: pointer;
-		display: flex;
-		justify-content: space-between;
-		outline: none;
-		width: 35px;
-		transition: var(--transition) ease all;
-	}
-
-	.homeContainer .switch span {
-		width: 15px;
-		height: 15px;
-		line-height: 15px;
-		display: block;
-		background: none;
-	}
-
-	.homeContainer .switch .sol {
-		color: #000;
-		margin-top: 1px;
-	}
-
-	.homeContainer .switch .luna {
-		color: #fff;
-		margin-top: 1px;
-	}
-
-	.homeContainer .switch::after {
-		content: '';
-		display: block;
-		width: 16px;
-		height: 16px;
-		position: absolute;
-		background: #dadada;
-		top: -0.1px;
-		left: -1px;
-		right: unset;
-		border-radius: 100px;
-		transition: var(--transition) ease all;
-	}
-
-	.homeContainer .switch.active {
-		background: rgb(255, 255, 255);
-	}
-
-	.homeContainer .switch.active::after {
-		right: 0;
-		left: unset;
-	}
-
-	.homeContainer .arriba .fa-user-circle {
-		font-size: 30px;
-		color: #343d5b;
-		transition: var(--transition) ease all;
-	}
-
-	.paginas {
-		top: 10px;
-		width: 85%;
-		overflow: auto;
-	}
-
-	.paginas::-webkit-scrollbar {
-		display: none;
-	}
-	
-	.paginas .elementoNav {
-		font-size: 14px;
-		padding: 2px 5px;
-		margin: 5px;	
-		border-radius: 15px;
-	}
-	/* Contenido Pagina */
-	.contenido {
-		width: 100%;
-		padding: 0% 5% 0% 5%;
-		display: grid;
-		grid-template-columns: 33% 67%;
-		grid-template-areas:
-			'nombreEmpresaCetro nombreEmpresaCetro'
-			'identidad         identidad'
-			'puntuacionCirculo puntuacionCirculo'
-			'graficaPrecio     graficaPrecio'
-			'infoGeneral       infoGeneral'
-			'roicYanalystas    roicYanalystas';
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		top: 110px;
-	}
-
-	/* Indentidad------------ */
-	.contenedorNombreEmpresaCentro {
-		grid-area: nombreEmpresaCetro;
-		display: flex;
-		justify-content: center;
-		align-items: baseline;
-		width: 100%;
-		margin-top: 10px;
-	}
-
-	.nombreEmpresaCetro {
-		display: block;
-		font-size: 19px;
-	}
-
-	.identidad {
-		align-items: baseline;
-		margin-top: 0px;
-	}
-
-
-	.identidad .nombreEmpresa {
-		display: none;
-	}
-
-	.identidad .tickerEmpresa {
-		font-size: 18px;
-		margin-left: 5px;
-	}
-
-	.identidad .precioAccion {
-		font-size: 18px;
-		margin-left: 5px;
-	}
-
-	.identidad .cambioNominal {
-		font-size: 14px;
-		margin-left: 5px;
-	}
-
-	.identidad .cambioPorcentual {
-		font-size: 14px;
-		margin-left: 5px;
-	}
-
-	/* circulo de puntuacion-------- */
-	.contenedorGraficaPuntuacion {
-		width: 50%;
-		max-width: 200px;
-	}
-
-	.contenedorCirculoDePuntuacion .puntuacion {
-		position: absolute;
-		font-size: 25px;
-		font-weight: 600;
-		color: rgb(30, 30, 30);
-	}
-	
-	/* Cambio porcentual y nominal */
-	.cambioDeLaAccion {
-		margin-bottom: 5px;
-		font-size: 15px;
-	}
-	
-	/* Flechas */
-	.fa-arrow-down {
-		margin-left: 10px;
-	}
-	
-	.fa-arrow-up {
-		margin-left: 10px;
-	}
-	
-	/* Desde cuando */
-	.desdeCuando {
-		margin-left: 5px;
-	}	
-
-	/* Botones------ */
-
-	.botonesTemporalidadGrafica {
-		width: 80%;
-	}
-
-	.botonesTemporalidadGrafica button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 5px 0px;
-		font-size: 11px;
-		width: 100%;
-		height: 15px;
-	}
-
-	.contenedorGraficaPrecio {
-		width: 100%;
-	}
-
-	/* Info General -------------------------*/
-	.infoGeneral {
-		grid-area: infoGeneral;
-		display: flex;
-		justify-content: space-around;
-		align-self: flex-start;
-		font-size: 14px;
-		margin-top: 10px;
-		margin-bottom: 0px;
-	}
-
-	.infoGeneral1,
-	.infoGeneral2 {
-		width: 45%;
-		text-align: left;
-		background-color: none;
-	}
-
-	.valorInfoGeneral {
-		text-align: right;
-	}
-
-	.alrededor {
-		border: 1px solid #f2f1f1;
-		padding: 10px;
-	}
-
-	/* Radar de puntuaciones */
-	.contenedorPuntuacionesCircular {
-		width: 70%;
-		max-width: 300px;
-		display: none;
-	}
-
-	.contenedorDataPuntuacion {
-		display: none;
-	}
-
-	/* Seccion abajo de grafica roic y analystas */
-	.contenedorRoicYanalystas {
-		grid-area: roicYanalystas;
-		justify-self: center;
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		margin-bottom: 50px;
-		margin-top: 50px;
-	}
-
-	/* Roic */
-	.contenedorRoic {
-		display: none;
-	}
-
-	/* Analystas */
-	.contenedorAnalystas {
-		display: flex;
-		flex-direction: column;
-		width: 80%;
-		min-width: 320px;
-		margin-top: -30px;
-	}
-
-	/* Grafica Opinion Analystas----*/
-	.contenedorOpinionesAnalystas {
-		box-shadow: none;
-		padding: 15px 0px;
-	}
-
-	.contenedorCanvasOpinionesAnalystas {
-		width: 100%;
-	}
-
-	/* Grafica Earnings----- */
-	.contenedorEarnings {
-		box-shadow: none;
-		margin-top: 20px;
-	}
-
-	.contenedorCanvasEarnings {
-		width: 100%;
-	}
+.subrayar td {
+	font-weight: 600;
 }
