@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Alpha Finance</title>
+		<link rel="icon" href="../../../../imagenes/logo bien.png" />
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="cashFlow.css" />
+        <link rel="stylesheet" href="../../../../paquetesDescargados/rSlider.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="../../../../paquetesDescargados/chart.js"></script>
+		<link rel="stylesheet" href="../../../../paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="homeContainer" id="homeContainer">
+			<header class="arriba">
+				<a class="contenedorLogo" href="../../../../index.html"
+					><img src="../../../../imagenes/logo bien.png" alt="Alfa Finance" class="logo"
+				/></a>
+				<div class="baraBusqueda">
+                    <img src="../../../../imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search Ticker (AAPL)" id="barraBusqueda" onkeyup="autocompleteActivado()"> 
+                </div>
+				<div class="contenedorBotonLogin">
+					<button class="switch" id="switch">
+						<span><i class="fas fa-sun sol"></i></span>
+						<span><i class="fas fa-moon luna"></i></span>
+					</button>
+					<a class="contenedorLogin" href="../../../../login/login.html"
+						><i class="far fa-user-circle"></i
+					></a>
+				</div>
+			</header>
+			<nav class="paginas">
+				<a class="elementoNav summary" href="../../../busqueda.html"
+					><h3>Summary</h3></a
+				>
+				<a
+					class="elementoNav statistics"
+					href="../../statistics/statistics.html"
+					><h3>Statistics</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../../profile/profile.html"
+					><h3>Profile</h3></a
+				>
+				<a
+					class="elementoNav financials"
+					href="../../financials/financials.html"
+					><h3>Financials</h3></a
+				>
+				<a
+					class="elementoNav analysis"
+					href="../../analysis/analysis.html"
+					><h3>Analysis</h3></a
+				>
+				<a
+					class="elementoNav owners"
+					href="../../owners/owners.html"
+					><h3>Owners</h3></a
+				>
+				<a
+					class="elementoNav news"
+					href="../../news/news.html"
+					><h3>News</h3></a
+				>
+			</nav>
+            <main class="contenido">
+                <div class="menuFinancialsContenedor">
+                    <a href="../incomeStatment/financials.html" class="menuFinancial menuIncomeStatment"><b>Income Statment</b></a>
+                    <a href="../balancesheet/balanceSheets.html" class="menuFinancial menuIncomeBalanceSheet"><b>Balance Sheets</b></a>
+                    <a href="../cashflow/cashFlow.html" class="menuFinancial menuCashFlow"><b>Cash Flow</b></a>
+                </div>
+                <div class="tituloDeSeccionContenedor">
+                    <b class="tituloDeSeccion">Cash Flow Statment</b>
+                </div>
+				<div class="contenedroSlider" id="contenedroSlider">
+                    <input type="text" id="slider" class="slider">
+                </div>
+                <div class="contenedorCanvasGraficaPirincipal">
+                    <canvas  height="130" class="graficaPrincipal" id="graficaPrincipal"></canvas>
+                </div>
+				<div class="contenedorAjustes">
+					<div class="cajaAjustes">
+						<b>Display Currency:</b>
+						<div class="botonCurrency">
+							<button id="botonCurrency">USD</button>
+						</div>
+					</div>
+					<div class="cajaAjustes">
+						<b>Display Units:</b>
+						<div class="botonesHorizontales contenedorBotonesUnites">
+							<button id="botonK" class="seleccion">K</button>
+							<button id="botonMM" class="botonActivo seleccion">MM</button>
+							<button id="botonB" class="seleccion">B</button>
+						</div>
+					</div>
+					<div class="cajaAjustes cajaDecimals">
+						<b>Decimals to Dysplay:</b>
+						<div class="botonesHorizontales">
+							<button class="seleccion" id="botonMenos">
+								<b>-</b>
+							</button>
+							<b id="puntosDecimales">0</b>
+							<button class="seleccion" id="botonMas">
+								<b>+</b>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="contenedorTablaCompleta">
+					<div class="contenedorTitulosTabla">
+						<table class="titulosTabla" id="titulosTabla">
+							<tr  class="trFechas">
+								<th class="">Breakdown</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla subrayarImportante"><i class="fa-solid fa-circle-chevron-down flechaDropDown hide" id="flechaOparatingCahsFlow"></i>Oparating Cahs Flow</th>
+							</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Net Income</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Depreciation & amortization</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Deferred Tax</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Stock based compensation</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Other non-cash items</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla"><i class="fa-solid fa-circle-chevron-down flechaDropDown hide abajo1Flecha" id="flechaChangeInWorkingCapital"></i>Change In Working Capital</th>
+								</tr>
+									<tr>
+										<th class="tituloTabla abajo3Texto">Change Receivables</th>
+									</tr>
+									<tr>
+										<th class="tituloTabla abajo3Texto">Change in Inventory</th>
+									</tr>
+									<tr>
+										<th class="tituloTabla abajo3Texto">Change in Payables</th>
+									</tr>
+									<tr>
+										<th class="tituloTabla abajo3Texto">Change Other Current Assets</th>
+									</tr>
+									<tr>
+										<th class="tituloTabla abajo3Texto">Change Other Work Capital</th>
+									</tr>
+								<tr>
+									<th class="tituloTabla subrayarImportante"><i class="fa-solid fa-circle-chevron-down flechaDropDown hide" id="flechaInvestingCahsFlow"></i>Investing Cash Flow</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Capital Expenditures</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Investments</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Other Investing Activities</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla subrayarImportante"><i class="fa-solid fa-circle-chevron-down flechaDropDown hide" id="flechaFinancingCahsFlow"></i>Financing Cash Flow</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Issuance Payments of Debt</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Sale/Purchase Of Stock</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Dividends Paid</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla abajo2Texto">Other Financing Activities</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla subrayarImportante"><i class="fa-solid fa-circle-chevron-down flechaDropDown hide" id="flechaEndCashPosition"></i>End Cash Position</th>
+								</tr>
+									<tr>
+										<th class="tituloTabla abajo2Texto">Start Cash Position</th>
+									</tr>
+									<tr>
+										<th class="tituloTabla abajo2Texto">Changes in Cash</th>
+									</tr>
+								<tr>
+									<th class="tituloTabla abajo1Texto">Free Cash Flow</th>
+								</tr>
+						</table>
+					</div>
+					<div class="contenedorTablaMovil">
+						<table class = "tablaMovil" id="tablaMovil">
+							<tr id="trFechas" class="trFechas">
+					
+							</tr>
+							<tr id="trOparatingCahsFlow" class="subrayarImportante">
+								
+							</tr>
+								<tr id="trNetIncome" >
+									
+								</tr>
+								<tr id="trDepreciationAmortization" >
+								
+								</tr>
+								<tr id="trDeferredTax">
+						
+								</tr>
+								<tr id="trStockBasedCompensation">
+									
+								</tr>
+								<tr id="trOtherNonCashItems">
+							
+								</tr>
+								<tr id="trChangeInWorkingCapital">
+									
+								</tr>
+									<tr id="trChangeReceivables">
+
+									</tr>
+									<tr id="trChangeInventory" >
+										
+									</tr>
+									<tr id="trChangePayables">
+										
+									</tr>
+									<tr id="trChangeOtherCurrentAssets">
+										
+									</tr>
+									<tr id="trChangeOtherWorkingCapital">
+										
+									</tr>
+						<tr id="trInvestingCashFlow" class="subrayarImportante">
+							
+						</tr>
+							<tr id="trCapitalExpenditures" >
+								
+							</tr>
+							<tr id="trInvestments">
+							
+							</tr>
+							<tr id="trOtherInvestingActivites">
+								
+							</tr>
+						<tr id="trFinancingCashFlow" class="subrayarImportante">
+					
+						</tr>
+							<tr id="trIssuencePaymentsOfDebt" >
+								
+							</tr>
+							<tr id="trSalePurchaseOfStock" >
+								
+							</tr>
+							<tr id="trDividendPaid" >
+								
+							</tr>
+							<tr id="trOtherFinancingActivities" >
+								
+							</tr>
+						<tr id="trEndCashPosition" class="subrayarImportante">
+				
+						</tr>
+							<tr id="trBiginningCashPosition" >
+									
+							</tr>
+							<tr id="trChangeInCash" >
+								
+							</tr>
+						<tr id="trFreeCashFlow" >
+							
+						</tr>
+						</table>
+					</div>
+				</div>
+            </main>
+        </body>
+        <script src="../../../../paquetesDescargados/rSlider.min.js"></script>
+        <script src="cashFlow.js"></script>
+</html>
