@@ -452,7 +452,7 @@ function trabajarAcciones(data) {
 // Ver si el array acciones existe en local stor, si existe usar el del local store si no tomar el de la api
 if(localStorage.getItem('arrayAcciones') == null) {
 	console.log('cargandoAcciones')
-	arrayAcciones = trabajarDataAcciones('https://eodhd.com/api/exchange-symbol-list/US?api_token='+ apiToken +'&type=common_stock&fmt=json')
+	arrayAcciones = trabajarDataAcciones('https://eodhd.com/api/exchange-symbol-list/NASDAQ?api_token='+ apiToken +'&type=common_stock&fmt=json')
 } else {
 	arrayAcciones = JSON.parse(localStorage.getItem('arrayAcciones'));
 }
