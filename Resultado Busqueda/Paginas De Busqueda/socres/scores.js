@@ -503,6 +503,8 @@ function tarabajarMiIndicador(data) {
 				assetsTurnOverTTM,
 				assetsTurnOverAtras
 			);
+			arrayFscore.push(fScoreTTM)
+
 
 			// Calcular M score
 			mScoreTTM = Mscore(
