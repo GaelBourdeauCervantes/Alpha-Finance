@@ -15,7 +15,7 @@ apiToken = '60c184d42ae3a5.75307084'
 // Widgets-----------------------------------------------------------
 
 // Definir lista de tickers de empresas a poner en widgets
-tickersWidgets = ['MSFT','AAPL','NVDA','GOOG','AMZN','META','BRK-B','LLY']
+tickersWidgets = ['MSFT','AAPL','NVDA','GOOGL','AMZN','META','BRK-B','LLY']
 
 
 // Definir funcion para trabajar data del widget dado sin incluir precio----------------
