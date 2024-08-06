@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alpha Finance</title>
+        <link rel="icon" href="imagenes/logo bien.png">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+        <script src="paquetesDescargados/chart.js"></script>
+    </head>
+    <body>
+        <div class="loader">
+            <img src="imagenes/circle-loader-gif-2.gif" alt="">
+        </div>
+        <div class="homeContainer">
+            <header class="arriba">
+                <a class="contenedorLogo" href="index.html"><img src="imagenes/logo bien.png" alt="Alfa Finance" class="logo"></a>
+                <div class="contenedorBotonLogin">
+                    <button class="switch" id="switch">
+                        <span><i class="fas fa-sun sol"></i></span>
+                        <span><i class="fas fa-moon luna"></i></span>
+                    </button>
+                    <a class="contenedorLogin" href="login/login.html"><i class="far fa-user-circle"></i></a>
+                </div>
+            </header>
+            <main class="contenido">
+                <div class="Titulado">
+                    <h1 class="titulo">Alpha</h1>
+                    <h2 class="subTitulo">Finance</h2>
+                </div>
+                <div class="baraBusqueda">
+                    <img src="imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search a Company" id="barraBusqueda" onkeyup="search(event)"> 
+                    <div class="autocomplete-items" id="autocompleteItems">
+
+                    </div>
+                </div>
+                <div class="widgetsAcciones">
+                    <a class="widget Accion1" href="Resultado Busqueda/busqueda.html" id="widget1" onclick="guardarTicker()">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio1"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal1"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual1"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador1">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget1"><canvas id="graficaPuntuacion1"></canvas></div>
+                            <b class="puntuacion" id="puntuacion1"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion2" href="Resultado Busqueda/busqueda.html" id="widget2">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio2"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal2"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual2"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador2">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget2"><canvas id="graficaPuntuacion2"></canvas></div>
+                            <b class="puntuacion" id="puntuacion2"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion3" href="Resultado Busqueda/busqueda.html" id="widget3">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio3"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal3"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual3"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador3">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget3"><canvas id="graficaPuntuacion3"></canvas></div>
+                            <b class="puntuacion" id="puntuacion3"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion4" href="Resultado Busqueda/busqueda.html" id="widget4">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio4"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal4"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual4"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador4">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget4"><canvas id="graficaPuntuacion4"></canvas></div>
+                            <b class="puntuacion" id="puntuacion4"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion5" href="Resultado Busqueda/busqueda.html" id="widget5"> 
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio5"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal5"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual5"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador5">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget5"><canvas id="graficaPuntuacion5"></canvas></div>
+                            <b class="puntuacion" id="puntuacion5"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion6" href="Resultado Busqueda/busqueda.html" id="widget6">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre">.</h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio6"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal6"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual6"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador6">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget6"><canvas id="graficaPuntuacion6"></canvas></div>
+                            <b class="puntuacion" id="puntuacion6"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion7" href="Resultado Busqueda/busqueda.html" id="widget7">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio7"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal7"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual7"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador7">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget7"><canvas id="graficaPuntuacion7"></canvas></div>
+                            <b class="puntuacion" id="puntuacion7"></b>
+                        </div>
+                    </a>
+                    <a class="widget Accion8" href="Resultado Busqueda/busqueda.html" id="widget8">
+                        <div class="identidad">
+                            <h2 class="ticker"></h2>
+                            <h3 class="nombre"></h3>
+                        </div>
+                        <div class="precios">
+                            <b class="precio" id="widgetAccionPrecio8"></b>
+                            <div class="cambio">
+                                <b class="cambioNominal" id="cambioWidgetNominal8"></b>
+                                <b class="cambioPorcentual" id="cambioWidgetPorcentual8"></b>
+                            </div>
+                        </div>
+                        <div class="contenedorImagen">
+                            <img  alt="" class="imagen">
+                        </div>
+                        <div class="contenedorIndicador" id = "contenedorIndicador8">
+                            <div class="contenedorGraficaWidget" id="contenedorGraficaWidget8"><canvas id="graficaPuntuacion8"></canvas></div>
+                            <b class="puntuacion" id="puntuacion8"></b>
+                        </div>
+                    </a>
+                </div>
+            </main>
+        </div>
+        <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.js"
+		integrity="sha512-VnJVXpOlJZ9qp7za6z7yzGvoNSIzHpeLfGlg7LoAqiMSkglhSUDJrxeUmKBPH1LtPlcypv6NnNO4Bbx8fkBD+w=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	    ></script>
+        <script src="codigo.js"></script>
+    </body>   
+    <!-- 
+    ░░░░░░░░░░░░░░░░░░░▒▓▓█████████████▓▓▒░░░░░░░░░░░░░░░░░░░░░░
+    ░░░░░░░░░░░░░░▒████▓▓▒▒░▒▒▒░▒▒▒▒▒▒▓▓████▓▒░░░░░░░░░░░░░░░░░░
+    ░░░░░░░░░░░▒███▓░░░░░░░░░░░░░░░░░░░░░░▒███████▓▓▒░░░░░░░░░░░
+    ░░░░░░░░░▒██▓░░░░▒▒███▓▓▒░░░░░░░░░░░░░▓▓▒▒▒▒▒▓██████▓░░░░░░░
+    ░░░░░░░▒██▓░░░▓███▓▒░░░░░░░░▒▒▒▒▒▒▒▒▒▒░░░░░░▒▓▓███▓████▒▒░░░
+    ░░░░░░██▓░░▒▓██▓░░▒▓██████▓░░░░░░░▒░░░░░░▒██▓▒░░░▓███▒▓▒░░░░
+    ░░░░░██░░▓███▒░░▒██▒░░░░▒▒██▓░░░░░░░░░░░██▒░░░░▒████▒█░░░░░░
+    ░░░░██░▒▓▒▓▓░░░██░░░░░░░░░░░█▓░░░░░░░░░██░░░░░░▒███░░█▒░░░░░
+    ░░░▓█░░░░░░░░░██░░░░░░░░░░░░▓█░░░░░░░░██░░░░░░░░░░░░░█▒░░░░░
+    ░░░█▓░░░░░░░░░█▒░░████░░░░░░░█▒░░░░░░░██░░░░░░░░░░░░███░░░░░
+    ░░▒█░░░░░░░▒▓▒█▓░▓████▓░░░░░▒█░░░░░░░░▒█▒░░░░░░░░░░██░█▒░░░░
+    ░░██░░░░░▒▓▒▓▒██▒▒▓▓▓░░░░░░░██░░░░░░░░░▒████▓███████▓░█▒░░░░
+    ░░█▓░░░░░▒░░░▒░▒██▓▒░░░░░▒██▓░░░░░░░░░░░░░░██▓░░░░░░▒██▓░░░░
+    ░░█░░░░░░░░░▓▒░░░░▒▓██████▓░░░░░░░░░░░░░░▒██░░░▓█▓▓▒░░░██░░░
+    ░▒█░░░░░░░░░░░░░░░░░░░░░░░░░░▓▒▓▒▒▒▒▒▓▓▓▓██░░▓█▓░▒▒██▒░░██░░
+    ░▓█░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▒░░██░░██▓░▒░▒░██░░▒█░░
+    ░██░░░░░░░░░░░░░░░░░░░░░░░▒▓▒▒▒▒▒▒▒▒░░░██░░▓█░█▓░█▒█▓█▓░░█░░
+    ░██░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒░▒▒░░▓█▓░░██░█▒▒█▒█▒▓█░░█░░
+    ░██░░░░░░░░░░░░░░░░░░░░░░░░▒░░░░░░░░░░▓█░░░█▒░░░░▒▒░░▒█░▓█░░
+    ░▒█░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒░░█▒░░█▒░░░░░░░░▓█░█▓░░
+    ░░█▓░▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓█░░█▒░░░░░░░░█░▒█░░░
+    ░░▓█░░▒░░▒▒░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░█░░█▒░░░░░░░█▓░█▓░░░
+    ░░░█▒░░▒░░▒░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░░█░░█▒░░░░░░▓█░░█░░░░
+    ░░░██░░░▒░▒░░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░█░░█▒░░░░░░██░░█░░░░
+    ░░░░█▓░░░▒░▒░░░░▒▒░░░░░▒▒▒▒▒▒░░░░░░░░░░▒█░▒█░░░░░░░█▒░░█▓░░░
+    ░░░░▓█░░░░▒▒░░░░░▒▒░░░░░░▒▒▒▓▓▓▒░░░░░░░██░██░░░░░░░██░░▓█░░░
+    ░░░░░██░░░▒░▒░░░░░▒░░░░░░░░▒░▒▒▓█▒░░░░▒█░░█▓▒▓▓▓▒░░▓█░░░█▒░░
+    ░░░░░▒█▒░░░▒▒▒░░░░▒░░░░░░░░░░▒▒▒░▒▓░░░██░▒█░░░░▒▓▓░░██░░█▒░░
+    ░░░░░░▒█▒░░░▒░▒░░░▒░░░░░░▒▒▒░░░░▒▒░░░▒█░░██░░░░░░░█░▒█░░█▒░░
+    ░░░░░░░▓█░░░▒░▒░░░░▒▒░░░░▓▒▒▓▓▓▒░░▓▒░██░░██▒▒▒▒▓▒▓▓███░░█▒░░
+    ░░░░░░░░██░░░▒░▒░░░░░▒▒░░░░░░░░▓█▓░░░█▓░░██░▓█░█░█░░█▒░░█▒░░
+    ░░░░░░░░░██░░░░▒▒░░░░░░▒▒░░░░░░░░▒█▓░█▓░░▓█▒▒█▒█░█▒██░░▒█░░░
+    ░░░░░░░░░░██▒░░░░▒░░░▒░░░▒▒░░░░░░░░▒▓██░░░██░░░░▒▒██░░░██░░░
+    ░░░░░░░░░░░▓██░░░░░░░░▒▒░░░▒░░░░░░░░░▓█░░░░▓███▓▓██░░░██░░░░
+    ░░░░░░░░░░░░░▓██▒░░░░░░▒▒▒▒▒░░░░░░░░░░██░░░░░░▒▒▒░░░░██░░░░░
+    ░░░░░░░░░░░░░░░▓███▒░░░░░░░▒▒▒▒▒▒▒▒░░░░▓██▒░░░░░░░▒███░░░░░░
+    ░░░░░░░░░░░░░░░░░▒▓███▓▒░░░░░░░▒░░▒▒▒▒░░░▒██▓██████▓░░░░░░░░
+    ░░░░░░░░░░░░░░░░░░░░░▒████▓▒▒░░░░░░░░░░░░░░░▓██▒░░░░░░░░░░░░
+    ░░░░░░░░░░░░░░░░░░░░░░░░░▒▓████▓░░░░░░░▓█████▒░░░░░░░░░░░░░░
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒█████████▒░░░░░░░░░░░░░░░░░░░
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒░░░░░░░░░░░░░░░░░░░░░░░
+-->
+</html>
