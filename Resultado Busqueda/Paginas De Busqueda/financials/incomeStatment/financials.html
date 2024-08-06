@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<!-- Recuerda agregar la opcion de mostrar el precio en la grafica usando el otro lado de mediad!!! -->
+<html>
+	<head>
+		<title>Alpha Finance</title>
+		<link rel="icon" href="../../../../imagenes/logo bien.png" />
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="financials.css" />
+        <link rel="stylesheet" href="../../../../paquetesDescargados/rSlider.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="../../../../paquetesDescargados/chart.js"></script>
+		<link rel="stylesheet" href="../../../../paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+    </head>
+	<body>
+		<div class="homeContainer" id="homeContainer">
+			<header class="arriba">
+				<a class="contenedorLogo" href="../../../../index.html"
+					><img src="../../../../imagenes/logo bien.png" alt="Alfa Finance" class="logo"
+				/></a>
+				<div class="baraBusqueda">
+                    <img src="../../../../imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search a Company" id="barraBusqueda" onkeyup="search(event)"> 
+					<div class="autocomplete-items" id="autocompleteItems">
+
+                    </div>
+                </div>
+				<div class="contenedorBotonLogin">
+					<button class="switch" id="switch">
+						<span><i class="fas fa-sun sol"></i></span>
+						<span><i class="fas fa-moon luna"></i></span>
+					</button>
+					<a class="contenedorLogin" href="../../../../login/login.html"
+						><i class="far fa-user-circle"></i
+					></a>
+				</div>
+			</header>
+			<nav class="paginas">
+				<a class="elementoNav summary" href="../../../busqueda.html"
+					><h3>Summary</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../../profile/profile.html"
+					><h3>Profile</h3></a
+				>
+				<a
+					class="elementoNav statistics"
+					href="../../statistics/statistics.html"
+					><h3>Statistics</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../../socres/scores.html"
+					><h3>Scores</h3></a
+				>
+				<a
+					class="elementoNav financials"
+					href="../../financials/incomeStatment/financials.html"
+					><h3>Financials</h3></a
+				>
+				<a
+					class="elementoNav analysis"
+					href="../../analysis/analysis.html"
+					><h3>Analysis</h3></a
+				>
+				<a
+					class="elementoNav owners"
+					href="../../owners/owners.html"
+					><h3>Owners</h3></a
+				>
+				<a
+					class="elementoNav news"
+					href="../../news/news.html"
+					><h3>News</h3></a
+				>
+			</nav>
+            <main class="contenido">
+                <div class="menuFinancialsContenedor">
+                    <a href="../incomeStatment/financials.html" class="menuFinancial menuIncomeStatment"><b>Income Statment</b></a>
+                    <a href="../balancesheet/balanceSheets.html" class="menuFinancial menuIncomeBalanceSheet"><b>Balance Sheets</b></a>
+                    <a href="../cashflow/cashFlow.html" class="menuFinancial menuCashFlow"><b>Cash Flow</b></a>
+                </div>
+                <div class="tituloDeSeccionContenedor">
+					<img id="documentoLogoEmpresa"></img>
+                    <b class="tituloDeSeccion">Income Statment</b>
+                </div>
+				<div class="contenedroSlider" id="contenedroSlider">
+                    <input type="text" id="slider" class="slider">
+                </div>
+                <div class="contenedorCanvasGraficaPirincipal">
+                    <canvas  height="130" class="graficaPrincipal" id="graficaPrincipal"></canvas>
+                </div>
+				<div class="contenedorAjustes">
+					<div class="cajaAjustes">
+						<b>Display Currency:</b>
+						<div class="botonCurrency">
+							<button id="botonCurrency">USD</button>
+						</div>
+					</div>
+					<div class="cajaAjustes">
+						<b>Display Units:</b>
+						<div class="botonesHorizontales contenedorBotonesUnites">
+							<button id="botonK" class="seleccion">K</button>
+							<button id="botonMM" class="botonActivo seleccion">MM</button>
+							<button id="botonB" class="seleccion">B</button>
+							<button id="botonPorcentaje" class="seleccion">%</button>
+						</div>
+					</div>
+					<div class="cajaAjustes cajaDecimals">
+						<b>Decimals to Dysplay:</b>
+						<div class="botonesHorizontales">
+							<button class="seleccion" id="botonMenos">
+								<b>-</b>
+							</button>
+							<b id="puntosDecimales">0</b>
+							<button class="seleccion" id="botonMas">
+								<b>+</b>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="contenedorTablaCompleta">
+					<div class="contenedorTitulosTabla">
+						<table class="titulosTabla">
+							<tr  class="trFechas">
+								<th class="tituloTabla">Breakdown</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Total revenue</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Cost Of revenue</th>
+							</tr>
+							<tr class="subrayar">
+								<th class="tituloTabla">Gross Profit</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">S & G & A</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla" id = "r&d">Research & Development</th>
+							</tr>
+							<tr class="subrayar">
+								<th class="tituloTabla" id = "oparatingExpenses">Total Operating Expenses</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Operating Income</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla" id="nonOparatingIncome">Non Operating Income</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Interest Income</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Interest Expense</th>
+							</tr>
+							<tr class="subrayar">
+								<th class="tituloTabla">NetInterest Income</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla" id="otherIncomeExpense">Other Income Expense</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Pretax Income</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Tax Provision</th>
+							</tr>
+							<tr class="subrayar">
+								<th class="tituloTabla">Net Income</th>
+							</tr>
+						</table>
+					</div>
+					<div class="contenedorTablaMovil">
+						<table class = "tablaMovil">
+							<tr id="trFechas" class="trFechas">
+								
+							</tr>
+							<tr id="trTotalRevenue">
+								
+							</tr>
+							<tr id="trCostOfRevenue">
+								
+							</tr>
+							<tr id="trGrossProfit" class="subrayar">
+								
+							</tr>
+							<tr id="trSellingGeneralAdministrative">
+								
+							</tr>
+							<tr id="trResearchDevelopment">
+								
+							</tr>
+							<tr id="trTotalOperatingExpenses" class="subrayar">
+								
+							</tr>
+							<tr id="trOperatingIncome">
+								
+							</tr>
+							<tr id="trNonOperatingIncomeNetOther">
+								
+							</tr>
+							<tr id="trInterestIncome">
+								
+							</tr>
+							<tr id="trInterestExpense">
+								
+							</tr>
+							<tr id="trNetInterestIncome" class="subrayar">
+								
+							</tr>
+							<tr id="trTotalOtherIncomeExpenseNet">
+								
+							</tr>
+							<tr id="trIncomeBeforeTax">
+								
+							</tr>
+							<tr id="trTaxProvision">
+								
+							</tr>
+							<tr id="trNetIncome" class="subrayar">
+								
+							</tr>
+						</table>
+					</div>
+				</div>
+            </main>
+        </body>
+        <script src="../../../../paquetesDescargados/rSlider.min.js"></script>
+        <script src="financial.js"></script>
+</html>

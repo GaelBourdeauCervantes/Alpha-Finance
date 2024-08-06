@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Alpha Finance</title>
+		<link rel="icon" href="../../../imagenes/logo bien.png" />
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="analysis.css" />
+        <link rel="stylesheet" href="../../../paquetesDescargados/rSlider.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="../../../paquetesDescargados/chart.js"></script>
+		<link rel="stylesheet" href="../../../paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+	<body>
+		<div class="homeContainer" id="homeContainer">
+			<header class="arriba">
+				<a class="contenedorLogo" href="../../../index.html"
+					><img src="../../../imagenes/logo bien.png" alt="Alfa Finance" class="logo"
+				/></a>
+				<div class="baraBusqueda">
+                    <img src="../../../imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search a stock" id="barraBusqueda" onkeyup="search(event)"> 
+					<div class="autocomplete-items" id="autocompleteItems">
+
+                    </div>
+                </div>
+				<div class="contenedorBotonLogin">
+					<button class="switch" id="switch">
+						<span><i class="fas fa-sun sol"></i></span>
+						<span><i class="fas fa-moon luna"></i></span>
+					</button>
+					<a class="contenedorLogin" href="../../../login/login.html"
+						><i class="far fa-user-circle"></i
+					></a>
+				</div>
+			</header>
+			<nav class="paginas">
+				<a class="elementoNav summary" href="../../busqueda.html"
+					><h3>Summary</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../profile/profile.html"
+					><h3>Profile</h3></a
+				>
+				<a
+					class="elementoNav statistics"
+					href="../statistics/statistics.html"
+					><h3>Statistics</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../socres/scores.html"
+					><h3>Scores</h3></a
+				>
+				<a
+					class="elementoNav financials"
+					href="../financials/incomeStatment/financials.html"
+					><h3>Financials</h3></a
+				>
+				<a
+					class="elementoNav analysis"
+					href="../analysis/analysis.html"
+					><h3>Analysis</h3></a
+				>
+				<a
+					class="elementoNav owners"
+					href="../owners/owners.html"
+					><h3>Owners</h3></a
+				>
+				<a
+					class="elementoNav news"
+					href="../news/news.html"
+					><h3>News</h3></a
+				>
+			</nav>
+            <main class="contenido">
+                <div class="menuAnalysisContenedor">
+                    <a href="../analysis/analysis.html" class="menuAnalysis menuDCF"><b>DCF</b></a>
+                    <a href="../analysis/benGraham/benGraham.html" class="menuAnalysis menuBenjaminGrahamFormula"><b>Ben Graham</b></a>
+                    <a href="../analysis/earningsMultiples/earningsMultiples.html" class="menuAnalysis menuRelativeValuationModel"><b>Multiples</b></a>
+                    <a href="../analysis/avrageIntrinsicValue/avrageValue.html" class="menuAnalysis menuRelativeValuationModel"><b>Average Value</b></a>
+                </div>
+				<div class="tituloDeSeccionContenedor">
+					<img src="" alt="" id="documentoLogoEmpresa">
+                    <b class="tituloDeSeccion">DCF</b>
+                </div>
+				<div class="resultado">
+					<div class="contenedorValorActual">
+						<b>Price per share</b>
+						<h3 id="todayPrice"></h3>
+					</div>
+					<div class="contenedorDiferencia">
+						<b id = "textoPosibleChange"></b>
+						<h3 id="posibleChange"></h3>
+					</div>
+					<div class="contenedorValorDCF">
+						<b>Intrinsic Value</b>
+						<h3 id="dcfValuation"></h3>
+					</div>
+				</div>
+				<div class="contenedorInputs">
+					<er class="marcarError" id="marcarError">
+						<b id="errorMessage"></b>
+					</er>
+					<div>
+						<b>Years To Project</b>
+						<input type="text" name="" id="añosProyectar" value="5">
+					</div>
+					<div>
+						<b>Perpetual Grwoth Rate</b>
+						<input type="text" name="" id="perpetualGrwothRate" value="2.5%">
+					</div>
+					<div>
+						<b>10 year treasury yield</b>
+						<input type="text" name="" id="riskFreeRate" value="4.32%">
+					</div>
+					<div>
+						<b>Expected market return</b>
+						<input type="text" name="" id="expectedReturn" value="10%">
+					</div>
+					<div>
+						<b>Required Rate Of Return</b>
+						<input type="text" name="" id="inputRiquiredRateOfReturn">
+					</div>
+					<div>
+						<b>WACC</b>
+						<h3 id="requieredReturnElement"></h3>
+					</div>
+				</div>
+				<div class="contenedorCanvasGraficaPirincipal">
+                    <canvas  height="130" class="graficaPrincipal" id="graficaPrincipal"></canvas>
+                </div>
+				<div class="contenedorTablaCompleta">
+					<div class="contenedorTitulosTabla">
+						<table class="titulosTabla">
+							<tr  class="trFechas">
+								<th class="tituloTabla">Date</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Free Cash Flow</th>
+							</tr>
+							<tr>
+								<th class="tituloTabla">Discount Rate</th>
+							</tr>
+							<tr class="subrayar">
+								<th class="tituloTabla">Net Present Value</th>
+							</tr>
+						</table>
+					</div>
+					<div class="contenedorTablaMovil">
+						<table class = "tablaMovil" id="tablaMovil">
+							<tr id="trFechas" class="trFechas">
+								
+							</tr>
+							<tr id="trFreeCashFlow">
+								
+							</tr>
+							<tr id="trDiscountRate">
+								
+							</tr>
+							<tr id="trNetPresentValue" class="subrayar">
+								
+							</tr>
+						</table>
+					</div>
+					<div class="contenedorPrecios">
+						<div class="marketCapReal">
+
+						</div>
+						<div class="marketCapEvaluado">
+
+						</div>
+					</div>
+				</div>
+				<div class="proyeccionRevenue">
+					<h2 class="tituloProyecion">Total Revenue Projection</h2>
+					<div class="inputValuesContainer">
+						<div class="previous5YearsCAGRContainer">
+							<b id="previous5YearsCAGRTitle">Previous 5 years CGR</b>
+							<h3 id="previous5YearsCAGR"></h3>
+						</div>
+						<div class="estimatedNext5YearsCAGRContainer">
+							<b id="estimatedNext5YearsCAGRTitle">Estimated Next 5 years CAGR</b>
+							<input type="text" value="" id="totalRevenueGrwothInput"></input>
+						</div>
+					</div>
+					<div class="contenedorCanvasGraficaProyecion">
+						<canvas  height="130" class="graficaTotalrevenue" id="graficaTotalrevenue"></canvas>
+					</div>
+					<div class="contenedorTablaProyecciones">
+						<div class="contenedorTitulosTabla">
+							<table class="titulosTabla">
+								<tr  class="trFechas">
+									<th class="tituloTabla">Date</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla tituloTotalRevenue">Total Revenue</th>
+								</tr>
+							</table>
+						</div>
+						<div class="contenedorTablaMovil" id="contenedorTablaMovil">
+							<table class = "tablaMovil" id="tablaMovil">
+								<tr id="trFechasTotalRevenue" class="trFechas">
+									
+								</tr>
+								<tr id="trTotalRevenue">
+									
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="proyecccionOCF">
+					<h2 class="tituloProyecion">Oparating Cash Flow Projection</h2>
+					<div class="inputValuesContainer">
+						<div class="previous5YearsCAGRContainer">
+							<b id="avrage5YearsMarginTitle">Average 5 years Margin</b>
+							<h3 id="avrage5YearsMargin"></h3>
+						</div>
+						<div class="estimatedNext5YearsCAGRContainer">
+							<b id="estimatedNext5YearsMarginTitle">Estimated Next 5 years Margin</b>
+							<input type="text" value="" id="nextOCFMarginInput"></input>
+						</div>
+					</div>
+					<div class="contenedorCanvasGraficaProyecion">
+						<canvas  height="130" class="graficaOCF" id="graficaOCF"></canvas>
+					</div>
+					<div class="contenedorTablaProyecciones">
+						<div class="contenedorTitulosTabla">
+							<table class="titulosTabla">
+								<tr  class="trFechas">
+									<th class="tituloTabla">Date</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla">Oparating Cash Flow</th>
+								</tr>
+							</table>
+						</div>
+						<div class="contenedorTablaMovil" id="contenedorTablaMovil">
+							<table class = "tablaMovil" id="tablaMovil">
+								<tr id="trFechasOCF" class="trFechas">
+									
+								</tr>
+								<tr id="trOCF">
+									
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="proyecccionCAPEX">
+					<h2 class="tituloProyecion">Capital Expenditures Proyeccion</h2>
+					<div class="inputValuesContainer">
+						<div class="previous5YearsCAGRContainer">
+							<b id="avrage5YearsCAPEXCAGRTitle">Average 5 years CAGR</b>
+							<h3 id="avrage5YearsCAPEXCAGR"></h3>
+						</div>
+						<div class="estimatedNext5YearsCAGRContainer">
+							<b id="estimatedNext5YearsCAPEXCAGRTitle">Estimated Next 5 years Cost</b>
+							<input type="text" value="" id="nextCAPEXCAGRInput"></input>
+						</div>
+					</div>
+					<div class="contenedorCanvasGraficaProyecion">
+						<canvas  height="130" class="graficaCAPEX" id="graficaCAPEX"></canvas>
+					</div>
+					<div class="contenedorTablaProyecciones">
+						<div class="contenedorTitulosTabla">
+							<table class="titulosTabla">
+								<tr  class="trFechas">
+									<th class="tituloTabla">Date</th>
+								</tr>
+								<tr>
+									<th class="tituloTabla">CAPEX</th>
+								</tr>
+							</table>
+						</div>
+						<div class="contenedorTablaMovil" id="contenedorTablaMovil">
+							<table class = "tablaMovil" id="tablaMovil">
+								<tr id="trFechasCAPEX" class="trFechas">
+									
+								</tr>
+								<tr id="trCAPEX">
+									
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+            </main>
+        </body>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.js"
+		integrity="sha512-VnJVXpOlJZ9qp7za6z7yzGvoNSIzHpeLfGlg7LoAqiMSkglhSUDJrxeUmKBPH1LtPlcypv6NnNO4Bbx8fkBD+w=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+    <script src="../../../paquetesDescargados/rSlider.min.js"></script>
+    <script src="analysis.js"></script>
+</html>
