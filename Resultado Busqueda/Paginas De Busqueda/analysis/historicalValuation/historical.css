@@ -1,0 +1,403 @@
+@font-face {
+	font-family: 'Poppins';
+	src: url('../../../../paquetesDescargados/Poppins/Poppins-Light.ttf') format('woff2');
+}
+
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins';
+}
+
+a {
+	text-decoration: none;
+}
+
+.homeContainer {
+	width: 100%;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	grid-template-columns: 100%;
+	grid-template-rows: 70px 30px;
+	grid-template-areas:
+		'arriba'
+		'paginas'
+		'contenido';
+	transition: var(--transition) ease all;
+}
+
+/* Seccion arrriba----------------------------------------------------------------------------------------------------------- */
+.arriba {
+	width: 99%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-area: arriba;
+    position: fixed;
+	top: 0;
+	z-index: 1000;
+}
+
+.homeContainer .contenedorLogo {
+	height: 60px;
+}
+
+.homeContainer .logo::selection {
+	background-color: rgb(200, 200, 200);
+}
+
+.homeContainer .arriba .logo {
+	height: 100%;
+}
+
+/* Barra de busqueda */
+.homeContainer .baraBusqueda {
+	position: relative;
+	width: 700px;
+	height: 45px;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	background-color: rgb(255, 255, 255);
+	border-radius: 20px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(100, 100, 100, 0.1);
+}
+
+.homeContainer .baraBusquedaactivada {
+	border-radius: 20px 20px 0px 0px;
+	box-shadow: none;
+}
+
+.homeContainer .baraBusqueda .lupa {
+	height: 100%;
+}
+
+.homeContainer .baraBusqueda .input {
+	outline: none;
+	border: none;
+	height: 80%;
+	width: 90%;
+	font-size: 25px;
+	font-weight: normal;
+	margin-left: 2px;
+	background-color: inherit;
+	text-transform: uppercase
+}
+
+.homeContainer .baraBusqueda .input::placeholder {
+	text-transform: none;
+	font-size: 25px;
+	font-weight: normal;
+}
+
+
+/* Caja conteneiendo opciones autocomplete*/
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid rgba(100, 100, 100, 0.1);
+	border-top: none; 
+	border-bottom: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: -0.25%;
+	right: -0.25%;
+	border-radius: 20px;
+}
+
+/* Cada elemento individual de opciones */
+.autocomplete-items div, .posibleResult{
+	padding: 10px 7%;
+	cursor: pointer;
+	background-color: #ffffff; 
+}
+
+
+.autocomplete-items div:last-child {
+	border-radius: 0px 0px 20px 20px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+	background-color: #e9e9e9; 
+}
+
+a {
+	color: #000;
+}
+
+.homeContainer .arriba .contenedorBotonLogin {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.homeContainer .switch {
+	background: #343d5b;
+	border-radius: 1000px;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	outline: none;
+	margin-right: 20px;
+	width: 60px;
+	transition: var(--transition) ease all;
+}
+
+.homeContainer .switch span {
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	display: block;
+	background: none;
+}
+
+.homeContainer .switch .sol {
+	color: #000;
+	margin-top: 4px;
+}
+
+.homeContainer .switch .luna {
+	color: #fff;
+	margin-top: 4px;
+}
+
+.homeContainer .switch::after {
+	content: '';
+	display: block;
+	width: 27px;
+	height: 27px;
+	position: absolute;
+	background: #dadada;
+	top: -0.1px;
+	left: -1px;
+	right: unset;
+	border-radius: 100px;
+	transition: var(--transition) ease all;
+}
+
+.homeContainer .switch.active {
+	background: rgb(255, 255, 255);
+}
+
+.homeContainer .switch.active::after {
+	right: 0;
+	left: unset;
+}
+
+.homeContainer .arriba .fa-user-circle {
+	font-size: 40px;
+	color: #343d5b;
+	transition: var(--transition) ease all;
+}
+
+/* seccion navigacion------------------------------------------------------------------- */
+.paginas {
+	grid-area: paginas;
+	display: flex;
+	flex-flow: row;
+	align-self: flex-end;
+	width: 99%;
+}
+
+.paginas .elementoNav {
+	background-color: #dbdbde;
+	font-size: 18px;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: center;
+	color: rgb(0, 0, 0);
+	width: 100%;
+	text-decoration: none;
+}
+
+.paginas .elementoNav:hover {
+	background-color: #eae8e8 !important;
+	border: 1px solid rgb(124, 124, 124);
+	cursor: pointer;
+}
+
+
+.analysis {
+	background-color: #eae8e8 !important;
+	border: 1px solid rgb(124, 124, 124);
+}
+
+/* Contenido */
+.contenido {
+	width: 90%;
+	position: absolute;
+	top: 110px;
+	display: grid;
+	grid-template-columns: 20% 80%;
+    grid-template-areas: 'tipoAnalisis    tipoAnalisis'
+	                     'titulo          titulo'
+						 'fechas          fechas'
+                         'tituloMultiplo1 tituloMultiplo1'
+						 'resultado1      resultado1'
+						 'grafica1        grafica1';
+	align-items: center;
+	justify-items: center;
+}
+
+/* Menu tipo de analysis */
+.menuAnalysisContenedor {
+	grid-area: tipoAnalisis;
+	display: flex;
+	flex-flow: row;
+	text-align: center;
+	width: 900px;
+}
+
+.menuAnalysisContenedor .menuAnalysis {
+	background-color: #dbdbde;
+	font-size: 18px;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: center;
+	color: rgb(0, 0, 0);
+	width: 100%;
+	text-decoration: none;
+	padding: 0 10px;
+}
+
+.menuAnalysisContenedor .menuAnalysis:hover {
+	background-color: #eae8e8 !important;
+	border: 1px solid rgb(124, 124, 124);
+	cursor: pointer;
+}
+
+.menuHistoricalV {
+    background-color: #eae8e8 !important;
+	border: 1px solid rgb(124, 124, 124);
+}
+
+.tituloDeSeccionContenedor {
+	grid-area: titulo;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	color: #000;
+    font-size: 50px;
+	margin-top: 15px;
+}
+
+.tituloDeSeccionContenedor img {
+	position: absolute;
+	left: 0%;
+	height: 50px;
+}
+
+
+/* Caja fechas */
+
+.contenedorCajaFechas {
+	grid-area: fechas;
+	width: 100%;
+	display: flex;
+	justify-content:  center;
+}
+/* Estilos para el contenedor del selector de fechas */
+.date-picker-container {
+    display: flex;
+	align-self: flex-start;
+    justify-content: space-between; /* Alinea los elementos horizontalmente */
+    align-items: center;
+	margin: 15px 0px 18px 0px;
+    width: 500px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border: 0.5px solid rgb(186, 183, 183);
+}
+
+/* Estilos para el grupo de input */
+.input-group {
+    display: flex;
+    flex-direction: column; /* Disposición vertical de etiqueta e input */
+    width: 45%;
+}
+
+/* Estilos para las etiquetas */
+.date-label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Estilos para los inputs */
+.date-input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+	text-align: center;
+}
+
+/* Efecto de enfoque en el input */
+.date-input:focus {
+    border-color: #6200ea;
+    box-shadow: 0 0 5px rgba(98, 0, 234, 0.5);
+    outline: none;
+}
+
+
+
+/* PE */
+.divTituloDeMultiplo {
+    grid-area: tituloMultiplo1;
+    margin-top: 0px;
+    font-size: 30px;
+}
+
+/* Resultado 1*/
+.resultado {
+	grid-area: resultado1;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 10px;
+}
+
+.resultado div {
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #7e7e7e;
+}
+
+.resultado div b {
+	font-size: 22px;
+	color: #000 !important;
+}
+
+/* Grafica1 */
+
+.contenedorCanvasGraficaPe {
+	grid-area: grafica1;
+	width: 90%;
+	max-width: 1200px;
+	margin-top: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	padding: 5px 9px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+	justify-self: center;
+	margin-bottom: 100px;
+}
+
+
+

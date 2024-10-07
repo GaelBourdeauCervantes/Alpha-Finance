@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Alpha Finance</title>
+		<link rel="icon" href="../../../../imagenes/logo bien.png" />
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="historical.css" />
+        <link rel="stylesheet" href="../../../../paquetesDescargados/rSlider.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="../../../../paquetesDescargados/chart.js"></script>
+		<link rel="stylesheet" href="../../../../paquetesDescargados/fontawesome-free-6.1.1-web/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+	<body>
+		<div class="homeContainer" id="homeContainer">
+			<header class="arriba">
+				<a class="contenedorLogo" href="../../../../index.html"
+					><img src="../../../../imagenes/logo bien.png" alt="Alfa Finance" class="logo"
+				/></a>
+				<div class="baraBusqueda">
+                    <img src="../../../../imagenes/buscarcirculo.png" alt="Search icon" class="lupa" id="lupaBuscar">
+                    <input type="text" class="input" placeholder="Search a stock" id="barraBusqueda" onkeyup="search(event)"> 
+					<div class="autocomplete-items" id="autocompleteItems">
+
+                    </div>
+                </div>
+				<div class="contenedorBotonLogin">
+					<button class="switch" id="switch">
+						<span><i class="fas fa-sun sol"></i></span>
+						<span><i class="fas fa-moon luna"></i></span>
+					</button>
+					<a class="contenedorLogin" href="../../../../login/login.html"
+						><i class="far fa-user-circle"></i
+					></a>
+				</div>
+			</header>
+			<nav class="paginas">
+				<a class="elementoNav summary" href="../../../busqueda.html"
+					><h3>Summary</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../../profile/profile.html"
+					><h3>Profile</h3></a
+				>
+				<a
+					class="elementoNav statistics"
+					href="../../statistics/statistics.html"
+					><h3>Statistics</h3></a
+				>
+				<a
+					class="elementoNav profile"
+					href="../../socres/scores.html"
+					><h3>Scores</h3></a
+				>
+				<a
+					class="elementoNav financials"
+					href="../../financials/incomeStatment/financials.html"
+					><h3>Financials</h3></a
+				>
+				<a
+					class="elementoNav analysis"
+					href="../../analysis/historicalValuation/historical.html"
+					><h3>Valuation</h3></a
+				>
+				<a
+					class="elementoNav owners"
+					href="../../owners/owners.html"
+					><h3>Owners</h3></a
+				>
+				<a
+					class="elementoNav news"
+					href="../../news/news.html"
+					><h3>News</h3></a
+				>
+			</nav>
+            <main class="contenido">
+                <div class="menuAnalysisContenedor">
+					<a href="../historicalValuation/historical.html" class="menuAnalysis menuHistoricalV"><b>Historical</b></a>
+                    <a href="../analysis.html" class="menuAnalysis menuDCF"><b>DCF</b></a>
+                    <a href="../benGraham/benGraham.html" class="menuAnalysis menuBenjaminGrahamFormula"><b>Ben Graham</b></a>
+                    <a href="../earningsMultiples/earningsMultiples.html" class="menuAnalysis menuRelativeValuationModel"><b>Multiples</b></a>
+                    <a href="../avrageIntrinsicValue/avrageValue.html" class="menuAnalysis menuRelativeValuationModel"><b>Average Value</b></a>
+                </div>
+				<div class="tituloDeSeccionContenedor">
+					<img src="" alt="" id="documentoLogoEmpresa">
+                    <b class="tituloDeSeccion">Historical Multiples</b>
+                </div>
+				<div class="contenedorCajaFechas">
+					<div class="date-picker-container">
+						<div class="input-group">
+							<label for="start-date" class="date-label">Starting Date:</label>
+							<input type="date" id="start-date" class="date-input">
+						</div>
+						<div class="input-group">
+							<label for="end-date" class="date-label">Final Date:</label>
+							<input type="date" id="end-date" class="date-input">
+						</div>
+					</div>
+				</div>
+                <div class="divTituloDeMultiplo">
+                    <b class="tituloDeMultiplo">Price to Earnings</b>
+                </div>
+				<div class="resultado">
+					<div class="contenedorValorActual">
+						<b>Price per share</b>
+						<h3 id="todayPrice"></h3>
+					</div>
+					<div class="contenedorDiferencia">
+						<b id = "textoPosibleChange"></b>
+						<h3 id="posibleChange"></h3>
+					</div>
+					<div class="contenedorValorDCF">
+						<b>Implied Price at Average</b>
+						<h3 id="dcfValuation"></h3>
+					</div>
+				</div>
+				<div class="contenedorCanvasGraficaPe">
+                    <canvas  height="130" class="graficaMuliploHistorico" id="graficaPeHistorico"></canvas>
+                </div>
+            </main>
+        </div>
+    </body>
+    <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.js"
+		integrity="sha512-VnJVXpOlJZ9qp7za6z7yzGvoNSIzHpeLfGlg7LoAqiMSkglhSUDJrxeUmKBPH1LtPlcypv6NnNO4Bbx8fkBD+w=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	></script>
+    <script src="historical.js"></script>
+</html>
