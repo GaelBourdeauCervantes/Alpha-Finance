@@ -1,0 +1,599 @@
+/* Paleta de colores----- */
+:root {
+  --color-azul-oscuro: #285260;  
+  --color-azul-medio:  #548C92; 
+  --color-azul-claro:  #B4D7D8;  
+  --color-crema:       #E0D7CF; 
+  --color-arena:       #AB9072;  
+  --color-positivo:    #188038;  
+  --color-negativo:    #d93025;
+  --color-neutro:      #666666;       
+  --color-texto-gen:   #1a1a1a;
+  --color-texto-prin:  #2C3E50;
+  --color-texto-sec:   #BDC3C7;
+  --color-fondo:       #f7f7f7;
+}
+
+@font-face {
+	font-family: 'Inter';
+	src: url('../../../paquetesDescargados/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Inter';
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-texto-gen);
+}
+
+.homeContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-fondo);
+}
+
+/* Seccion arrriba----------------------------------------------------------------------------------------------------------- */
+.seccionFija {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 98%;
+	padding-top: 25px;
+	position: fixed;
+	z-index: 999;
+	background-color: var(--color-fondo);
+}
+
+.arriba {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.homeContainer .contenedorLogo {
+	height: 60px;
+}
+
+.homeContainer .contenedorLogoEmpresa {
+	height: 100%;
+}
+
+.homeContainer .logo::selection {
+	background-color: rgb(200, 200, 200);
+}
+
+.homeContainer .arriba .logo {
+	height: 100%;
+}
+
+/* Barra de busqueda */
+.homeContainer .baraBusqueda {
+	position: relative;
+	width: 700px;
+	height: 45px;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	background-color: rgb(255, 255, 255);
+	border-radius: 20px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(100, 100, 100, 0.1);
+}
+
+.homeContainer .baraBusquedaactivada {
+	border-radius: 20px 20px 0px 0px;
+	box-shadow: none;
+}
+
+.homeContainer .baraBusqueda .lupa {
+	height: 100%;
+}
+
+.homeContainer .baraBusqueda .input {
+	outline: none;
+	border: none;
+	height: 80%;
+	width: 90%;
+	font-size: 16px;
+	font-weight: normal;
+	margin-left: 2px;
+	background-color: inherit;
+	text-transform: uppercase
+}
+
+.homeContainer .baraBusqueda .input::placeholder {
+	text-transform: none;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+
+/* Caja conteneiendo opciones autocomplete*/
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid rgba(100, 100, 100, 0.1);
+	border-top: none; 
+	border-bottom: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: -0.25%;
+	right: -0.25%;
+	border-radius: 20px;
+}
+
+/* Cada elemento individual de opciones */
+.autocomplete-items div, .posibleResult{
+	padding: 10px 7%;
+	cursor: pointer;
+	background-color: #ffffff; 
+	color: rgb(66, 179, 66);
+}
+
+
+.autocomplete-items div:last-child {
+	border-radius: 0px 0px 20px 20px;
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+	background-color: #e9e9e9; 
+}
+
+.homeContainer .arriba .contenedorLogin {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+
+.homeContainer .arriba .fa-user-circle {
+	font-size: 40px;
+	color: var(--color-azul-medio);
+	transition: var(--transition) ease all;
+}
+
+/* seccion navigacion------------------------------------------------------------------- */
+.paginas {
+	display: flex;
+	flex-flow: row;
+	justify-content:space-between;
+	width: 92%;
+	margin-top: 20px;
+	border-bottom: 2px solid var(--color-azul-medio);
+	background-color: #edefef;
+}
+
+.paginas .elementoNav {
+	background-color: #edefef;
+	width: 100%;
+	font-size: 14px;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: var(--color-texto-gen);
+}
+
+.paginas .elementoNav:hover {
+	background-color: #f3f2f2 !important;
+	border: 1px solid var(--color-azul-medio);
+	background-color: var(--color-azul-medio) !important;
+	color: rgb(255, 255, 255) !important;
+	cursor: pointer;
+}
+
+.profile {
+	background-color: #f3f2f2 !important;
+	border: 1px solid var(--color-azul-medio);
+	background-color: var(--color-azul-medio) !important;
+	color: rgb(255, 255, 255) !important;
+}
+
+/* Contenido--------------------- */
+.contenido {
+	width: 90%;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-areas: 'logoYEspecificaciones   contenedortabalOfficers'
+						 'descripcionNegocio      descripcionNegocio'
+						 'contenedorTablaCotiza   contenedorTablaCotiza';
+	position: absolute;
+	top: 150px;
+}
+
+/* Logo y especificaciones */
+.logoYEspecificaciones {
+	grid-area: logoYEspecificaciones;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 30% 70%;
+	grid-template-areas: 
+						'logo         infoAlLado'
+						'infoAbajo    infoAbajo';
+}
+
+/* Logo */
+.logoProfile {
+	grid-area: logo;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logoProfile img {
+	width: 60%;
+	max-width: 120px;
+}
+
+/* Info al lado */
+.especificasionesAlLado {
+	grid-area: infoAlLado;
+	display: flex;
+	flex-direction: column;
+	padding-left: 20px;
+	font-size: 13px;
+	color: #000;
+	gap: 4px;
+}
+
+.stockNameAlLado {
+	margin-bottom: 10px;
+	font-size: 22px;
+	color: #548C92;
+}
+
+.indicadorAllado {
+	color: #333;
+	display: flex;
+	align-items: baseline;
+}
+
+
+.indicadorAllado h3, .indicadorAllado a {
+	margin-left: 6px;
+	font-weight: 400;
+	font-size: 13px;
+	color: #444;
+}
+
+.stockNameAlLado b {
+	font-weight: 700;
+	color: red;
+}
+
+/* Info Abajo */
+.especificacionesAbajo {
+	grid-area: infoAbajo;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-top: 25px;
+}
+
+.tablaEspecificacionesAbajo {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+}
+
+.tablaEspecificacionesAbajo div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	width: 120px;
+	border-radius: 10px;
+	border: 1px solid rgb(222, 219, 219);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+	padding: 10px 5px;
+	background-color: #fff;
+}
+
+.tituloCajaAbajo {
+	font-size: 13px;
+	color: #548C92;
+	margin-bottom: 5px;
+}
+
+.valorCajaAbajo, .tablaEspecificacionesAbajo h4 {
+	font-weight: 600;
+	font-size: 13px;
+	color: #222;
+}
+
+/* Tabla Officers y cotiza */
+.contenedortabalOfficers {
+	grid-area: contenedortabalOfficers;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-height: 300px;
+	overflow-y: auto;
+	margin-top: 20px;
+}
+
+.contenedorTablaCotiza {
+	grid-area: contenedorTablaCotiza;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px 0;
+}
+
+.tituloTabla {
+	font-size: 16px;
+	background-color: #eaf2f3;
+	color: #548C92;
+	padding: 10px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	width: 90%;
+	text-align: center;
+	font-weight: 600;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contenedorSoloTabla {
+	display: flex;
+	justify-content: center;
+	overflow-x: auto;
+	width: 100%;
+}
+
+/* Tablas Generales */
+.contenedorTabla table, .contenedorSoloTabla table, .officers {
+	width: 90%;
+	border-collapse: collapse;
+	background-color: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+	font-size: 13px;
+}
+
+.contenedorTabla table th, .contenedorTabla table td,
+.officers th, .officers td {
+	border-bottom: 1px solid #eee;
+	padding: 8px 12px;
+	text-align: left;
+}
+
+.contenedorTabla table th, .officers th {
+	background-color: #f5f5f5;
+	color: #333;
+	font-weight: 600;
+	text-align: center;
+}
+
+.contenedorTabla table tr:nth-child(odd),
+.officers tr:nth-child(odd) {
+	background-color: #f9f9f9;
+}
+
+/* Descripcion de negocio */
+.descripcionNegocio {
+	grid-area: descripcionNegocio;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	margin: 30px 0;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+	background-color: #fff;
+}
+
+.tituloDescripcion {
+	font-size: 18px;
+	color: #548C92;
+	margin-bottom: 10px;
+}
+
+.textoDescripcion {
+	width: 90%;
+	font-size: 13px;
+	color: #333;
+	line-height: 1.6;
+	text-align: justify;
+}
+
+
+/* Responsive para patallas abajo de 1 000px */
+@media (max-width: 1000px) {
+	/* Seccion arrriba----------------------------------------------------------------------------------------------------------- */
+	.arriba {
+		width: 100%;
+		margin-top: 15px;
+		padding: 0px 10px;
+	}
+
+	.homeContainer .contenedorLogo {
+		height: 35px;
+	}
+
+
+	/* Barra de busqueda */
+	.homeContainer   .baraBusqueda {
+		position: relative;
+		width: 60%;
+	}
+
+	.homeContainer   .baraBusquedaactivada {
+		border-radius: 20px 20px 0px 0px;
+		box-shadow: none;
+	}
+
+	.homeContainer   .baraBusqueda .lupa {
+		height: 80%;
+	}
+
+	.homeContainer .baraBusqueda .input {
+		border: none;
+		width: 80%;
+		font-size: 14px;
+		font-weight: normal;
+		margin-left: 2px;
+	}
+
+	.homeContainer  .baraBusqueda .input::placeholder {
+		text-transform: none;
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+	.homeContainer .arriba .contenedorBotonLogin {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.homeContainer .switch {
+		background: #343d5b;
+		border-radius: 1000px;
+		border: none;
+		position: relative;
+		cursor: pointer;
+		display: flex;
+		justify-content: space-between;
+		outline: none;
+		width: 35px;
+		transition: var(--transition) ease all;
+	}
+
+	.homeContainer .switch span {
+		width: 15px;
+		height: 15px;
+		line-height: 15px;
+		display: block;
+		background: none;
+	}
+
+	.homeContainer .switch .sol {
+		color: #000;
+		margin-top: 1px;
+	}
+
+	.homeContainer .switch .luna {
+		color: #fff;
+		margin-top: 1px;
+	}
+
+	.homeContainer .switch::after {
+		content: '';
+		display: block;
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		background: #dadada;
+		top: -0.1px;
+		left: -1px;
+		right: unset;
+		border-radius: 100px;
+		transition: var(--transition) ease all;
+	}
+
+	.homeContainer .switch.active {
+		background: rgb(255, 255, 255);
+	}
+
+	.homeContainer .switch.active::after {
+		right: 0;
+		left: unset;
+	}
+
+	.homeContainer .arriba .fa-user-circle {
+		font-size: 30px;
+		color: #343d5b;
+		transition: var(--transition) ease all;
+	}
+
+	.paginas {
+		top: 10px;
+		width: 85%;
+		overflow: auto;
+	}
+
+	.paginas::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.paginas .elementoNav {
+		font-size: 14px;
+		padding: 2px 5px;
+		margin: 5px;	
+		border-radius: 15px;
+	}
+
+	/* Contenido--------------------- */
+	.contenido {
+		width: 100%;
+		padding: 0% 5% 0% 5%;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-template-areas:'logoYEspecificaciones    logoYEspecificaciones'
+							'descripcionNegocio       descripcionNegocio'
+							'contenedortabalOfficers  contenedortabalOfficers'
+							'contenedorTablaCotiza    contenedorTablaCotiza';
+		position: absolute;
+		top: 120px; 
+	}
+
+
+	/* Logo y especificaciones */
+	.logoYEspecificaciones {
+		grid-area: logoYEspecificaciones;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 30% 70%;
+		grid-template-areas: 
+							'logo        		   logo'
+							'infoAlLado            infoAlLado'
+							'infoAbajo   		   infoAbajo'
+							'tablaCotiza tablaCotiza';
+	}
+	/* Logo */
+	.logoProfile {
+		grid-area: logo;
+		width: 100%;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 25px;
+	}
+
+	.logoProfile img {
+		height: 100%;
+		width: auto;
+	}
+
+	.especificasionesAlLado {
+		padding: 0px;
+	}
+
+	.stockNameAlLado {
+		text-align: center;
+	}
+
+	.indicadorAllado {
+		margin-left: 20px;
+	}
+}
