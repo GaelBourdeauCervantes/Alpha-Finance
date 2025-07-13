@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.errr {
+    display: none;
+}
+
+:root {
+	--transition: 0.3s;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 'resto login';
+    overflow:hidden;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+.seccionWidgets {
+    grid-area: resto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.secionForm {
+    grid-area: login;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorLogo {
+    width: 20%;
+}
+
+.contenedorLogo .logo {
+    width: 100%;
+}
+
+
+.botonLoginSingin:hover {
+    cursor: pointer;
+}
+
+
+
+.botonLoginSingin {
+    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+    border: none;
+}
+.botonLoginSingin {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px rgb(170, 170, 170);
+   border-radius: 10px;
+   display: inline-block;
+ }
+
+ .botonLoginSingin:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+}
+
+
+.form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.form input:focus {
+    background: rgb(223, 223, 223);
+}
+
+
+
+
+/* Register */
+
+
+/* Opciones de genero */
+.form .opcionesGender {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    color: rgb(129, 129, 129);
+}
+
+
+
+.form .textoGender {
+    font-size: 15px;
+    color: rgb(153, 153, 153);
+}
+
+
+
+
+.contenedorIconos i {
+    margin: 0px 5px;
+    font-size: 60px;
+    color: rgb(153, 153, 153);
+}
+
+.contenedorIconos i:hover {
+    cursor: pointer;
+    color: rgb(95, 95, 95);
+}
+
+
+/* Mensaje error genero */
+
+.opcionesGender .contenedorMensaje {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+/* Inputs con contenedores */
+.form .contenedorInput, .form .contenedorInputRegistro {
+    margin: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+    width: 275px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: rgb(153, 153, 153);
+    background-color: #fff;
+}
+
+/* Agrandar los mails */
+.form .contenedorInputEmail {
+    width: 350px;
+}
+
+/* Parte del input */
+.form .contenedorInput input, .form .contenedorInputRegistro input{
+    outline: none;
+    border: none;
+    font-size: 20px;
+    color: rgb(0,0,0);
+    width: 90%;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Parte del icono */
+.form .contenedorInput i, .form .contenedorInputRegistro i{
+    width: 10%;
+}
+
+
+
+/* Hover caja */
+.contenedorInput:focus-within , .contenedorInputRegistro:focus-within{
+    background: rgb(223, 223, 223);
+}
+
+.contenedorInput:hover , .contenedorInputRegistro:hover{
+    transform: scale(1.06);
+    outline: .5px solid #48e;
+}
+
+
+/* Icono de ojo */
+.ojoMostarar {
+    margin-right: 10px;
+}
+
+.ojoMostarar:hover {
+    cursor: pointer;
+    color: rgb(0,0,0);
+}
+
+
+/* Mensajes de error */
+.registroMensajeError, .mensajeError {
+    font-size: 15px;
+    color: rgb(230,0,0);
+    margin-top: -10px;
+    text-align: center;
+}
+
+
+
+
+
+/* Texto olvidar codigo */
+.olvidarPasward {
+    text-decoration: none;
+    text-decoration: underline;
+    color: rgb(95, 95, 95);
+    text-align: center;
+}
+
+
+/* Boton */
+.botonDeEntar {
+    font-size: 20px;
+    margin-top: 15px;
+    background: rgb(153, 153, 153);
+    outline: none;
+    border: none;
+    box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    padding: 5px;
+    width: 350px;
+    color: rgb(0, 0, 0);
+}
+
+.botonDeEntar:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background: rgb(122, 122, 122);
+    color: #fff;
+}
+
+
+
+/* Colores para estado bueno/malo */
+
+.form .bueno {
+    color: rgb(0,100,0);
+}
+
+.form .malo {
+    color: rgb(230,0,0);
+}
+
+
+
+
+.esconder {
+    display: none;
+}
+
+
+
+
+/* Ajustar cambios a pantalla */
+
+
+/* Altura de pantalla cambiar form de registro*/
+
+/* #formRegister {
+    outline: 1px solid black;
+} */
